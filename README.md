@@ -243,3 +243,274 @@ les mots.
 de les séparer par un espace.
 - Les id ne peuvent être utilisés qu'une seule fois par page
 ```
+
+#### Appliquer du code css au sein d'une balise html
+
+Il existe une autre solution pour appliquer un style à un élément spécifique sans cibler l'ensemble
+des éléments de même type: appliquer le code css directement au sein de la balise ; pour faire
+cela, il suffit de placer notre déclaration css dans un attribut ***style*** de la balise qu'on souhaite
+modifier, si je reprends le code ci-dessus, cela donnera :
+
+```
+<body>
+  <h1 style="color: red;">Titre de premier niveau</h1>
+  <p>Ceci est un paragraphe</p>
+</body>
+```
+
+Le résultat sera identique et nous pouvons insérer plusieurs déclaration au sein de cette balise.
+
+#### Multiples déclarations css
+Il est bien entendu possible, dans tous les cas montrés ci-dessus, de faire plusieurs déclarations css
+en même temps :
+```
+#premier_titre {
+  color: red;
+  font-size: 15px;
+}
+```
+
+```
+.premier_titre {
+  color: red;
+  font-size: 15px;
+}
+```
+
+```
+<body>
+  <h1 style="color: red; font-size: 15px">Titre de premier niveau</h1>
+  <p>Ceci est un paragraphe</p>
+</body>
+```
+
+# Les bases de l'HTML
+
+## Introduction
+Nous avons vu dans le chapitre précédent les bases du HTML, du CSS et de comment ils
+fonctionnent ensemble.
+
+
+Nous allons maintenant rentrer un peu plus en profondeur en HTML pour mieux comprendre son
+fonctionnement.
+
+## Structure de base d'une page HTML
+Nous avons déjà pu voir comment se compose une page HTML, pour rappel voici la structure de
+base d'une page:
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mon site web</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+  </body>
+</html>
+```
+La plupart des éléments ci-dessus sont connus, mais nous pouvons voir qu'il y a un nouvel
+élément: **meta**. 
+Cette balise sert à passer des métadonnées - une donnée qui permet de décrire une autre donnée -
+au navigateur. Il est très fortement conseillé de l'inclure dans toutes vos pages et d'y passer
+l'attribut charset en lui donnant la valeur "utf-8". Cet attribut permet de définir un jeu de caractère,
+c'est ça qui indique à votre navigateur quel jeu de caractère utiliser. Il s'agit pour votre navigateur
+d'interpréter correctement les caractères affichés, ainsi si vous utilisez des caractères spéciaux
+comme des accents, si le jeu de caractère n'est pas bon, le rendu dans votre navigateur ne pourrait pas être le bon. Nous n'entrerons pas dans les détails mais sachez qu'il est en général très
+conseillé d'utiliser utf-8. C'est le jeu de caractère recommandé par le W3C; *Le world wide web consurtium*, l'organisation qui standardise les technologies du web comme l'html ou le css.
+
+On peut voir aussi que cet élément ne contient pas de balise fermante, on appelle ça un **élément vide.**
+
+## Les commentaires
+Lorsque vous développez, il est très utile de commenter son code. Cela permet de donner des
+indications sur ce que fait le code, ces commentaires ne seront pas affichés à l'écran mais bien
+visibles dans le code, cela permet de s'organiser et de s'y retrouver plus facilement dans son code.
+
+
+Cela permet aussi à d'autres développeurs de s'y retrouver plus facilement dans votre code dans le
+cadre d'un travail en équipe. 
+En html, un commentaire se place entre <*!--* et *--*>, ils peuvent être mono ou multiligne:
+```
+<body>
+  <!-- Ceci est un commentaire mono-ligne -->
+  <h1>Premier titre</h1>
+  <h2>Second titre</h2>
+  <!-- Ceci est un commentaire
+  multi-ligne -->
+  <p>Ceci est un paragraphe</p>
+</body>
+
+```
+## Organisation du texte
+Un paragraphe se défni avec la balise **<*p*><*/p*>**
+
+Les titres se déclarent avec les balises **<*h1*></*h1*>** à **<*h6*></*h6*>**
+
+Un retour à la ligne s'effectue avec la balise **<*br*>** qui est un élément vide, donc qui ne prend pas
+
+de fermeture. Aucun attribut n'est passé à cette balise, elle est simplement utilisée comme retour
+à la ligne.
+## Importance du texte
+Un texte peut être mis en emphase via la balise **<*em*><*/em*>**
+
+Un texte peut être déclaré comme de haute importance via la balise **<*strong*></*strong*>**
+
+Une partie pertinente d'un texte pour être marquée via la balise **<*mark*></*mark*>**
+
+Ces éléments ont un effet visuel mais **ils ne doivent pas être utilisés pour ça**. Un élément strong met le texte en gras, mais il ne faut pas s'en servir pour mettre du texte en gras, il faut s'en servir car l'on souhaite préciser que cet élément est de grande importance. 
+## "bloc" ou "inline" ?
+Chaque élément peut être soit de type *bloc*, soit de type *inline*. Un élément "bloc" essaiera de
+prendre le maximum d'espace horizontal à l'écran et un retour à la ligne sera effectué à l'ouverture et la fermeture de l'élément.
+
+A l'inverse, un élément "inline" prendra le moins d'espace horizontal possible, plusieurs élément
+"inline" peuvent donc être placé côte à côte. 
+
+Par exemple, **<*p*></*p*>** est un élément de type bloc, alors que **<*strong*></*strong*>** est un élément de type inline.
+## Listes
+Une liste non-ordonnée se déclare via la balise **<*ul*></*ul*>**
+
+Une liste ordonnée se déclare via la balise **<*ol*></*ol*>**
+
+Chaque élément d'une liste se défini via la balise **<*li*></*li*>**, donc par exemple:
+```
+<!-- Liste non ordonnée -->
+<ul>
+  <li>Element</li>
+  <li>Autre élément</li>
+</ul>
+<!-- Liste ordonnée -->
+<ol>
+  <li>Element 1</li>
+  <li>Element 2</li>
+</ol>
+```
+## Multiples pages et liens
+Un lien peut être fait vers une autre page (du même site ou non) via l'élément **<*a*></*a*>**
+
+L'attribut à indiquer pour donner le chemin vers le lien est href, le chemin peut être relatif ou
+absolu:
+
+- **Relatif**: Chemin par rapport à la page sur laquelle on se trouve. Par exemple, dans
+l'exemple ci-dessous, nous sommes sur la page *index.html* et nous souhaitons naviguer
+vers la page *voitures.html* se trouvant dans le dossier listes: 
+![](https://github.com/laubuur/ifapme-html-css/blob/main/images/folder-img.png)
+```
+<a href="liste/voitures.html">Lien vers voiture.html</a>
+```
+
+Pour faire l'inverse, et retourner au fichier *index.html* depuis la page *voitures.html*, il faut d'abord sortir du dossier pour l'ouvrir, cela se fait comme ceci:
+```
+<a href="../index.html">Lien vers voiture.html</a>
+```
+
+
+- **Absolu**: Chemin complet vers la page qu'on souhaite ouvrir, si votre site se trouve sur le
+site* www.monsite.be*, l'exemple ci-dessus donnerait :
+```
+<a href="www.monsite.be/liste/voitures.html">Lien vers voiture.html</a>
+<!-- Peut aussi être utilisé pour ouvrir un autre site internet -->
+<a href="www.google.be">Google</a>
+```
+
+### Lien vers une ancre
+Cet élément peut aussi être utilisé pour se déplacer automatiquement sur la page pour accéder à
+une section voulue. Pour cela, il faut donner un id à l'élément vers lequel on souhaite se diriger et
+renseigner cet id précédé d'un dièse dans l'attribut *href* de l'élément.
+```
+<div id="cible">Element cible vers lequel le lien doit mener</div>
+<a href="#cible">Lien pour accéder à l'élement cible</a>
+```
+Cela peut aussi être utilisé pour accéder à un élément d'une autre page, si cet élément cible se
+trouve dans la ma page *voitures.html*:
+```
+<a href="liste/voitures.html#cible">Lien pour accéder à l'élement cible d'une autre page</a>
+```
+
+### Infobulle sur lien
+Pour afficher une infobulle au survol d'un lien, il faut utiliser l'attribut **title** de l'élément **a**
+```
+<a href="liste/voitures.html#cible" title="lien vers voitures.html !">Lien pour accéder à 
+l'élement cible d'une autre page</a>
+```
+### Ouverture du lien dans une autre page
+Si vous souhaitez que le lien ne s'ouvre pas dans la page courante mais dans un autre onglet, il
+faut utiliser l'attribut **target** et lui passer la valeur **_blank**
+```
+<a href="liste/voitures.html#cible" target="_blank">Lien pour accéder à l'élement cible d'une 
+autre page</a>
+```
+## Images
+Il est possible en HTML d'afficher une image dans vos pages. Mais avant toutes choses, il faut
+comprendre ce qu'est une image et les choses à éviter pour ne pas alourdir vos pages web
+inutilement.
+
+Une image sur internet est compressée, c'est à dire qu'elle prendra moins d'espace disque et sera
+plus rapide à télécharger. Mais il existe différent moyen de compresser une image en les
+enregistrant dans différents formats.
+### Les formats à privilégier
+**WEBP** est un format d'image récent qui permet de garder une excellente qualité tout en utilisant
+un espace disque très réduit. Il gère aussi la transparence. La transparence permet d'avoir des
+images qui ne sont pas des rectangles ou qui ont des "trous" à l'intérieur. Ce format étant récent, il
+n'est parfois donc pas pris en charge par certains navigateurs plus anciens. 
+
+**PNG** est un autre format à privilégier, il comporte les mêmes qualités que webp même si sa
+compression est plus faible, les fichiers sont donc un peu plus lourd que webp.
+
+**JPEG** est le format d'image le plus répandu, il permet d'avoir des images fortement compressées
+mais avec une perte de qualité, certain logiciel permettent de modifier la compression de l'image
+pour réduire son espace disque tout en dégradant sa qualité. Cette opération est irréversible. Ce
+format ne supporte pas la transparence. 
+
+**GIF** est le format d'image utilisé quand on souhaite afficher des images animées. C'est ce qu'on
+appelle généralement "GIFs animés", c'est ça que vous pouvez retrouver sur vos applications de
+messagerie mobile comme Messenger, Whatsapp, ... 
+
+Il en existe d'autres mais ils sont moins fréquents. 
+
+Tous les autres formats sont généralement à bannir sur internet. 
+### Insérer une image
+L'insertion d'une image au sein d'une page web se fait via l'élément **<*img*>**, il s'agit d'un élément
+vide, d'une balise orpheline, il n'y a donc pas de balise de fermeture. Le chemin vers l'image peut
+être absolu ou relatif comme pour l'élément **a**, cette information est renseignée via l'attribut **src**:
+```
+<img src="mon_image.webp">
+```
+Il est fortement conseillé de renseigner aussi l'attribut **alt** pour "contenu alternatif", il s'agit d'un
+texte à afficher dans le cas où l'image ne peut pas être téléchargée ou utilisé pour des personnes
+utilisant des logiciels pour malvoyant. 
+```
+<img src="mon_image.webp" alt="Village de montagne">
+```
+Comme pour l'élément **a**, un attribut title peut être défini par ajouter une infobulle à l'image
+```
+<img src="mon_image.webp" alt="Village de montagne" title="Ceci est un village de montagne !">
+```
+
+Vous pouvez **redimensionner** une image directement en html via les attributs *width* pour la
+largeur et *height* pour la longueur, ces valeurs doivent être indiquées en pixel. Si une seule des
+deux valeurs est renseignées, l'autre valeur est calculée automatiquement pour garder le bon
+format d'image. 
+```
+<img src="mon_image.webp" alt="Village de montagne" title="Ceci est un village de montagne !" 
+width=32>
+```
+## Exercice
+
+Réaliser un site web contenant 3 pages.  Une page d'accueil index.html, une page de coordonnées
+coordonnee.html et une page d'images galerie.html.
+
+Sur chaque page il doit y avoir un menu contenant les liens d'accès aux 3 pages. 
+
+Sur la page d'accueil doit se trouver une présentation du site sous format texte en un ou deux
+paragraphes. Une partie du texte doit être mis en évidence car son contenu est jugé pertinent. 
+(https://fr.lipsum.com/ pour générer du texte aléatoire)
+
+Sur la page de coordonnées doit se trouver des coordonnées sous forme de liste, il doit au moins y
+être renseigné un numéro de téléphone et une adresse. 
+
+Sur la page de galerie doit se trouver trois images, ces trois images doivent être côte à côte et
+posséder une hauteur de 200 pixels. (https://unsplash.com/ pour accéder à une grande
+bibliothèque de photo libres de droit)
+
+Aller un peu plus loin: Faire en sorte que les images soient cliquables pour les ouvrir en taille réelle
+dans un nouvel onglet.
