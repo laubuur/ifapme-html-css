@@ -865,7 +865,7 @@ l'ordre dans lequel écrire ces valeurs:
 }
 ```
 ## Pseudo-classe
-Une *pseudo-classe*est un mot-clé qui peut être ajouté à un sélecteur afin d'indiquer l'état
+Une *pseudo-classe* est un mot-clé qui peut être ajouté à un sélecteur afin d'indiquer l'état
 spécifique dans lequel l'élément doit être pour être ciblé par la déclaration. Il s'écrit directement à
 la suite d'un sélecteur en commençait par un double-point. 
 Il en existe beaucoup, on va se pencher sur quelques-unes ici, d'autres seront vues plus tard dans
@@ -873,7 +873,7 @@ les sections appropriées.
 - **:hover** : S'applique lorsque la souris survole l'élément 
 - **:visited** : S'applique sur un lien lorsque celui-ci a déjà été visité
 - **:link** : S'applique sur un lien lorsqu'il n'a pas encore été visité
-- 
+
 ```
 /* Au survol d'un élément a, mettre sa couleur en rouge */
 a:hover {
@@ -888,3 +888,147 @@ a:link {
  color: blue; 
 }
 ```
+# Structure d'une page
+## Introduction
+On a vu comment le html et le css fonctionnaient ensemble et quelques propriétés pour modifier
+l'apparence d'un contenu. Nous allons maintenant avancer un peu plus pour voir comment
+positionner des éléments à l'écran, comment par exemple dire qu'un menu sera sur la gauche de
+l'écran et que le contenu se trouvera au centre.
+
+## Modèles de boites
+Avant toute chose, il faut comprendre comment fonctionne l'affichage d'un élément html, qu'on
+appellera en css "boite". On a déjà vu qu'il existait deux types de boites: **inline** et **block**, boite en
+ligne ou boite bloc. Certaines boites sont par défaut de type bloc et d'autre de type en ligne, par
+exemple h1 est de type block alors que strong est de type en ligne.
+
+Une boite bloc va fonctionner comme ceci:
+- Elle occupe 100% de l'espace disponible en largeur ;
+- Elle se positionne automatiquement sur une nouvelle ligne et crée un retour à la ligne
+après elle ;
+- Elle respecte les propriétés définissant sa hauteur (height) et sa largeur (width) ; 
+- Les propriétés de marge (margin, padding et border) provoqueront un déplacement des
+autres boites aux alentours.
+
+Une boite en ligne va, à contrario, fonctionner comme ceci:
+- Elle occupe uniquement l'espace nécessaire à l'affichage de son contenu ;
+- Elle ne crée pas de retour à la ligne, les éléments vont donc s'afficher les uns à la suite
+des autres horizontalement ;
+- Elle ne prend pas en compte les propriétés définissant sa hauteur (height) et sa largeur
+(width) ;
+- Les propriétés de marges verticales seront prises en comptes mais n'affecteront pas les
+boites aux alentours ;
+- Les propriétés de marges horizontales seront prises en comptes et affecteront les boites
+aux alentours.
+### Marges
+On peut en css appliquer des marges à un élément de trois manières différentes, la première:
+**border**, a été vue au chapitre précédent. C'est considéré comme une marge car une bordure
+occupe un espace à l'écran.
+
+La seconde est **margin**, elle permet de définir une marge extérieure à notre élément. Cela permet
+de mettre un espace en dehors de notre élément et d'ainsi mettre de l'espace entre plusieurs
+éléments, entre un élément et le bord de page, ...
+
+La dernière est **padding**, elle permet de définir une marge intérieure à notre élément. Cela permet
+donc de ne pas coller notre contenu au bord de la boite. 
+
+Ces deux propriétés sont des raccourcis, *shorthands*, chaque marge (gauche, droite, ...) peut être
+définie individuellement via les propriétés complètes margin-left, padding-top, ...
+![](https://github.com/laubuur/ifapme-html-css/blob/main/images/margin.png)
+
+Les marges sont définies par une taille, plusieurs tailles peuvent être passées aux propriétés
+raccourcies, voici des exemples explicatifs:
+```
+.box {
+ /* La propriété s'applique aux quatre côtés */
+ margin: 1em;
+
+ /* vertical | horizontal */
+ margin: 5% auto;
+
+ /* haut | horizontal | bas */
+ margin: 1em auto 2em;
+
+ /* haut | droit | bas | gauche */
+ margin: 2px 1em 0 auto;
+}
+```
+
+On peut voir dans l'exemple ci-dessus qu'en plus des unités classiques comme px ou em, on peut
+voir "auto". Cela signifie que la marge va être calculée automatiquement. C'est utilisé pour center
+un élément. 
+
+Si on reprend donc ce code: 
+.box {
+ /* vertical | horizontal */
+ margin: 5% auto;
+}
+
+Cela signifie qu'on appliquera une marge de 5% en haut et en bas et de centrer horizontalement
+l'élément. 
+```
+auto ne fonctionne pas pour centrer des éléments sur la hauteur. 
+```
+
+Ainsi, si l'on souhaite centrer un élément sans déclarer d'autre marge extérieure, on applique
+simplement cette déclaration:
+```
+/* Centrage d'un élément sur la largeur */
+.box {
+ margin: auto;
+}
+```
+
+**padding** s'utilise de la même manière, on peut passer 1 à 4 valeurs de la même manière que
+pour **margin**. 
+Si on applique toutes ces propriétés à une boite en haut à gauche de l'écran, on peut remarquer
+qu'elle est décalée du bord de l'écran et que le contenu à l'intérieur n'est pas directement contre la
+bordure de l'élément:
+![](https://github.com/laubuur/ifapme-html-css/blob/main/images/margin-ex.png)
+
+```
+.box {
+ border: 3px solid black;
+ margin: 20px;
+ padding: 14px;
+ width: 500px;
+ height: 200px;
+}
+```
+
+### Modèle standard et alternatif
+Ce qu'on vient de voir là est le **modèle standard**. Pour obtenir la taille réelle d'un élément, il faut
+additionner la taille définie (width, height), sa marge intérieure (padding), sa marge extérieur
+(margin) et sa bordure (border). 
+
+Ainsi, dans l'exemple ci-dessus, on fera width + padding + margin + border, soit 500 + 14 + 20 +
+3 = 537px pour connaitre la taille réelle de la boite. 
+
+Cela peut vite être dérangeant et source de problème de devoir prendre en compte ces 4 éléments
+pour avoir la taille réelle, c'est pourquoi un modèle alternatif a été mis en place. Il n'est
+absolument pas obligatoire et chaque développeur a sa préférence. 
+
+Le **modèle alternatif** consiste à ajouter la déclaration suivante à un élément: 
+```
+box-sizing: border-box
+```
+
+Cela aura pour effet d'inclure la marge intérieure (padding) et la bordure (border) à la taille de
+l'élément. Ainsi, dans l'exemple ci-dessus, le padding de 14px sera toujours bien présent, mais la
+largeur de 500px inclus maintenant ce padding et ne définit plus uniquement la taille de l'espace
+de contenu. Ainsi, la taille réelle de l'élément sera de 500 + 14 = 514px au lieu de 537. 
+![](https://github.com/laubuur/ifapme-html-css/blob/main/images/compare-models.png)
+
+## Exercice
+Utiliser tous les éléments vu jusqu'ici pour réaliser un CV.
+
+Le nom de la personne doit être particulièrement mis en évidence, le CV doit comporter au
+minimum 3 sections différentes, une section contenant les informations sur la personne, une
+section sur l'expérience professionnelle de la personne et une section sur ses formations. 
+Le CV doit faire maximum 1000px de large et doit être centré sur la page. 
+
+Essayer d'utiliser une ou plusieurs couleurs pour la mise en évidence, quelques exemples dont
+vous pouvez vous inspirez:
+
+![](https://github.com/laubuur/ifapme-html-css/blob/main/images/cv1.png)
+
+![](https://github.com/laubuur/ifapme-html-css/blob/main/images/cv2.png)
