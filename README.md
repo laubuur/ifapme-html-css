@@ -115,3 +115,131 @@ Le bouton Go Live  permet de lancer votre serveur web et d'afficher facilement
 votre page HTML sans devoir ouvrir le fichier avec le navigateur.
 ```
 ![](https://github.com/laubuur/ifapme-html-css/blob/main/images/go-live.png)
+
+## Premiers pas en CSS
+Le CSS va vous permettre de modifier l'apparence des éléments de votre page web. Ce code peut
+être placé à trois endroits différents: 
+- Directement sur l'élément concerné par ce que vous souhaitez faire ;
+- Au sein d'une balise <*style*> se trouvant sur votre page ;
+- Au sein d'un fichier CSS séparé. 
+
+
+Dans le cadre des premiers pas, on va inclure du code CSS au sein d'une balise <*style*>. Le code
+que nous mettrons dans cette balise peut être mis dans un fichier .css séparé. 
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mon site web</title>
+    <style>
+    
+    </style>
+  </head>
+  <body>
+    <h1>Titre de premier niveau</h1>
+    <p>Ceci est un paragraphe</p>
+  </body>
+</html
+```
+
+Le CSS ne fonctionne pas avec des balises mais avec des *sélecteurs*. Le but est de sélectionner un
+élément de la page via un sélecteur et de lui appliquer une apparence. Par exemple, je souhaite
+mettre tous les titres de niveau 1 (<*h1*>) en rouge, j'utilise le **sélecteur** *h1* et j'applique ensuite le style désiré: 
+
+```
+h1 {
+  color: red; 
+}
+```
+
+Ce code va sélectionner toutes les balises <*h1*>, lui appliquer la **propriété** css color et lui donner la **valeur** *red*.
+La chaine "*propriété : valeur;*" s'appelle une **déclaration**.
+
+![](https://github.com/laubuur/ifapme-html-css/blob/main/images/desc-css.png)
+
+
+Les déclarations qu'on passe à un sélecteur se fait toujours entre accolades. Plusieurs déclarations
+peuvent être faites pour un seul sélecteur. 
+La propriété et sa valeur doivent être séparés par un double point et la déclaration doit toujours se terminer par un point-virgule. 
+Les déclarations appliquées à un sélecteur doivent toujours se trouver entre accolades
+
+
+### Sélectionner une balise spécifique
+
+Nous avons vu comment sélectionner toute les balises *h1* en css pour y appliquer un style, mais
+comment faire pour sélectionner uniquement une seule balise *h1* et pas toutes les balises de ma
+page ? 
+
+
+Avant de répondre à cette question, nous devons d'abord nous pencher sur une spécificité du html:
+**les attributs**. Un attribut est une information supplémentaire qu'on va passer à une balise pour
+modifier son comportement. Il se déclare au sein d'une balise et prend généralement une valeur.
+
+#### Attribut class et id
+
+##### class
+
+L'attribut le plus courant et utilisé est **class**, il permet de donner une classe à notre élément, cette classe pourra ensuite être utilisée comme sélecteur css pour définir un style.
+
+```
+<body>
+  <h1 class="premier_titre">Titre de premier niveau</h1>
+  <p>Ceci est un paragraphe</p>
+</body>
+```
+
+On peut voir dans ce code qu'un attribut class a été ajouté à la balise *h1*. On peut alors modifier le code css vu ci-dessus pour appliquer la couleur rouge à la classe *premier_titre* et plus à toutes les balises *h1*.
+
+```
+.premier_titre {
+  color: red; 
+}
+```
+
+Vous remarquez que le nom de la classe est précédé d'un point, il est obligatoire car il permet
+d'indiquer au navigateur que ce sélectionneur concerne une classe, il va donc appliquer ce code à
+l'ensemble des balises contenant la classe *premier_titre*.
+
+```
+Quelques règles concernant l'attribut class:
+- Le nom d'une classe ne peut jamais contenir d'espace. On utilise
+généralement un "tiret bas", aussi appelé "underscore", pour séparer
+les mots.
+- Plusieurs classes peuvent être passées dans un attribut class, pour cela il suffit de les séparer par un espace.
+- Les classes peuvent être utilisées plusieurs fois par page.
+```
+
+##### ID
+
+L'attribut ID est similaire à l'attribut class, il fonctionne de la même manière et peut être utilisé
+comme sélectionneur css. Cependant, la différence majeure est qu'un ID doit impérativement être
+unique. Si vous donnez un ID à un élément de votre page, aucun autre élément de cette page ne
+pourra avoir le même ID. 
+
+Reprenons l'exemple ci-dessus:
+
+```
+<body>
+  <h1 id="premier_titre">Titre de premier niveau</h1>
+  <p>Ceci est un paragraphe</p>
+</body>
+```
+```
+#premier_titre {
+ color: red; 
+}
+```
+
+Nous pouvons remarquer que le sélecteur css ne commence plus par un point mais par un dièse, il
+permet d'indiquer que notre sélecteur est un ID. 
+
+```
+Quelques règles concernant l'attribut id:
+- Le nom d'un id ne peut jamais contenir d'espace. On utilise
+généralement un "tiret bas", aussi appelé "underscore", pour séparer
+les mots.
+- Plusieurs id peuvent être passées dans un attribut id, pour cela il suffit
+de les séparer par un espace.
+- Les id ne peuvent être utilisés qu'une seule fois par page
+```
