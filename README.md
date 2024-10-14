@@ -514,3 +514,377 @@ bibliothèque de photo libres de droit)
 
 Aller un peu plus loin: Faire en sorte que les images soient cliquables pour les ouvrir en taille réelle
 dans un nouvel onglet.
+
+# Les bases du CSS
+## Introduction
+On a vu précédemment que le CSS se plaçait directement au sein de l'élément HTML concerné,
+dans une balise *style* ou dans un fichier css séparé (recommandé). 
+
+On a aussi vu que le CSS fonctionnait par sélecteur et que chaque déclaration CSS contenait une
+propriété et une valeur.
+## Commentaires
+Un commentaire peut être ajouté à du code css en le mettant entre /* et */
+## Sélecteur simple
+Un sélecteur est un moyen de sélectionner un élément de notre page HTML pour y appliquer une
+déclaration css. Il y a trois moyens de sélectionner un élément:  directement via le nom de
+l'élément, via une classe ou via un id: 
+```
+/* Sélection via le nom de l'élément */
+h1 {
+  color: red;
+}
+
+/* Sélection via le nom d'une classe */
+.titre1 {
+  color: red;
+}
+
+/* Sélection via un ID */
+#titre1 {
+  color: red;
+}
+```
+
+## Combinateurs
+On est vite limité par les sélecteurs simples, ces sélecteurs peuvent être combinés pour faire des
+sélections plus complexes. 
+
+Par exemple, nous souhaitons que les liens d'un menu soit d'une couleur spécifique mais pas tous
+les liens d'une page. Vous pourriez attribuer une classe à chaque lien et appliquer le style sur cette
+classe, mais ça signifie que si vous ajoutez un lien à votre menu, vous devrez penser à ajouter la
+classe au nouveau lien. A la place, on peut spécifiquement sélectionner tous les liens au sein de
+notre menu. 
+
+Prenons la page html suivante:
+```
+<nav>
+  <ul>
+  <li><a href="page1.html">Page 1</a></li>
+    <li><a href="page2.html">Page 2</a></li>
+  <li><a href="page3.html">Page 3</a></li>
+  </ul>
+</nav>
+<p>
+  Voici un <a href="autre_page.html">lien</a> vers une autre page
+</p>
+```
+Pour modifier le style de tous mes liens se trouvant dans mon menu, donc au sein de l'élément *nav*
+, on peut combiner ces éléments comme ceci:
+```
+nav a {
+ color: red;
+}
+```
+Cela signifie que qu'on sélectionne tous les éléments a se trouvant dans le contenu d'un élément 
+*nav*.
+
+Il existe ainsi plusieurs combinaisons ayant des notations différentes, celle-ci se trouvant en gras
+dans le tableau ci-dessous:
+
+|Sélecteur|Description|
+|-|-|
+|*|Sélectionne tous les éléments|
+|E, F|Sélectionne tous les éléments de type E et de type F|
+|E F|**Sélectionne tous les éléments F à l’intérieur des éléments E**|
+|E > F|Sélectionne les éléments F enfants directs des éléments E|
+|E + F|Sélectionne tout élément F placé directement après un élément E|
+|E~F|Sélectionne tout élément F placé après un élément E dans la page|
+
+Ainsi, on peut voir que si on avait utilisé ce code, à priori similaire, cela n'aurait pas fonctionné:
+```
+nav > a {
+ color: red;
+}
+```
+Cela n'aurait pas fonctionné car a n'est pas un enfant directeur de *nav*. *a* est un enfant direct de *li*, lui-même enfant direct de *ul*, lui-même enfant de *nav*.
+## Formatage du texte
+### Taille du texte
+La taille d'un texte se défini avec la propriété **font-size**, la valeur à lui attribuer peut être
+indiquée en *valeur absolue* ou en *valeur relative*. En valeur absolue, cela signifie qu'on donne
+une taille fixe au texte quelle que soit la situation. Une taille relative signifie que qu'on donne une
+taille qui est relative à un autre élément, cette manière est généralement recommandée car ça
+offre plus de souplesse à l'utilisateur.
+
+#### Valeur absolue
+La taille absolue se définit en pixel, il s'agit donc d'un nombre entier suivi de "px". Ainsi, on pourra ainsi écrire
+```
+p {
+ font-size: 16px;
+}
+```
+#### Valeur relative
+La valeur relative peut être exprimée avec différentes unités et se basent sur une valeur de
+référence. Chaque navigateur dispose d'une taille de référence qui peut être modifiée par
+l'utilisateur, si celui-ci a besoin que son texte son plus grand. 
+
+En utilisant une valeur relative, notre texte s'adaptera ainsi automatiquement à la modification
+faite par l'utilisateur.
+
+Pour donner une valeur relative, on va principalement retenir deux types d'unité: ***em*** et ***rem***. Ils
+s'utilisent tous les deux de la même manière, ils font une multiplication de la valeur de référence.
+
+Par exemple, si le navigateur défini la taille de référence à 20px et que cette taille n'a pas été
+modifiée dans le code, 1rem défini la taille du texte sur 20px, 2rem défini la taille du texte sur 40px et 1.1rem donnera 22px.
+
+La différence entre *em* et *rem* est que *em* fait référence à l'élément parent tandis que *rem* fait
+référence à l'élément racine: html. 
+
+Il est ainsi beaucoup plus simple de garder une bonne cohérence entre les différentes tailles de
+texte en utilisant rem.
+```
+html {
+ font-size: 20px;
+}
+h1 {
+ font-size: 2rem;
+}
+h2 {
+ font-size: 1.8rem;
+}
+nav a {
+ font-size: 0.9rem; /* Le 0 est optionnel, on peut aussi écrire .9rem */
+}
+```
+### Polices
+La police utilisée peut être sélectionnée via la propriété: **font-family**. 
+
+Le problème principal est que pour qu'une police puisse être utilisée, l'utilisateur doit avoir la police
+sur son appareil. Ainsi, on peut désigner des polices alternatives si la police souhaitée n'est pas
+disponible: 
+```
+p {
+ font-family: Impact, "Arial Black", Arial, Verdana, sans-serif;
+}
+```
+Cela signifie que on souhaite que la police "Impact" soit utilisée sur nos paragraphes, mais si celle-ci n'est pas disponibles, on souhaite utiliser "Arial Black", ... 
+
+Si le nom d'une police ne possède pas d'espace, il peut être inscris tel quel, s'il possède un espace,
+il faut mettre le nom entre guillemets.
+
+La plupart du temps, des polices ne se trouvant pas de base sur tous les ordinateurs sont utilisées.
+Grâce au CSS, on peut télécharger une police à la volée directement depuis notre code CSS.
+Google dispose d'un site: https://fonts.google.com/
+
+Grâce à la *règle CSS* import, on peut importer une police facilement, par exemple, j'ai sélectionné
+une police sur google font, le site me donne cette instruction à ajouter au-dessus de ma page css:
+```
+@import 
+url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&disp
+lay=swap');
+``` 
+Il s'agit de la police "Open Sans", il me suffit ensuite d'utiliser ça comme "font-family"
+
+Pour appliquer cette police à toute ma page, il suffit d'appliquer cela à la balise html :
+
+```
+html {
+ font-family: "Open Sans", sans-serif;
+}
+```
+### Style du texte
+La propriété **font-style** permet de définir si le texte doit être en italique ou non.
+```
+p {
+ font-style: normal; 
+ font-style: italic;
+}
+```
+La propriété **text-decoration** est généralement utilisée pour souligner un texte, mais cette
+propriété permet d'utiliser une ligne au-dessus, au travers ou sous le texte et de définir le style de cette ligne.
+```
+p {
+ text-decoration: underline; /* Souligne le texte */
+ text-decoration: underline dotted; /* Souligne le texte en traits pointillés */
+ text-decoration: underline dotted red; /* Souligne le texte en traits pointillés rouges */
+ text-decoration: underline overline #FF3028; /* Souligne et surligne le texte en couleur #FF3028 */
+}
+```
+Plutôt que mettre toutes les valeurs directement sur la propriété **text-decoration**, cela peut être
+séparé en plusieurs propriétés: **text-decoration-color**, **text-decoration-style** et **text-decoration-line**
+```
+p {
+ text-decoration-line: underline; /* Souligne le texte */
+ text-decoration-line: overline; /* Surligne le texte */
+ text-decoration-line: line-through; /* Barre le texte */
+ text-decoration-line: underline overline; /* Souligne et surligne le texte */
+}
+```
+```
+p {
+ text-decoration-style: solid; /* Ligne solide */
+ text-decoration-style: double; /* Ligne double */
+ text-decoration-style: dotted; /* Ligne pointillée */
+ text-decoration-style: dashed; /* Ligne pointillée (plus large) */
+ text-decoration-style: wavy; /* Ligne sous forme de vague */
+}
+```
+```
+p {
+ text-decoration-color: red; /* Ligne en rouge */
+}
+```
+
+### Alignement du texte
+Le texte peut être aligné avec la propriété **text-align**:
+```
+p {
+ text-align: left; /* Alignement à gauche */
+ text-align: right; /* Alignement à droite */
+ text-align: center; /* Texte centré */
+ text-align: justify; /* Texte justifié */
+}
+```
+### Couleur du texte
+La couleur du texte se fait avec la propriété **color**
+```
+p {
+ color: red; 
+}
+```
+## Gestion des couleurs
+En CSS, on est très souvent confronté à devoir colorer un élément, que ça soit du texte, les cellules
+d'un tableau, le fond d'un texte voir même le fond de la page. Pour définir une couleur, on doit
+travailler au sein d'un espace de couleur, il en existe plusieurs en informatique mais le plus courant
+et celui utilisé par la plupart des systèmes de notations css est l'espace de couleur sRGB. C'est un
+espace qui existe depuis 1996 et qui est très majoritairement utilisé en informatique. On ne
+passera pas en revue les systèmes de notations qui n'utilisent pas cet espace de couleur. 
+
+Dans l'espace sRGB, il existe plus de 16 millions de couleurs différentes, il n'est donc pas
+concevable d'avoir un nom pour chaque couleur. Il existe plusieurs systèmes de notation différents
+que nous pouvons utiliser. Il est généralement très conseillé d'utiliser toujours le même système de
+notation lorsqu'on développe un site ou une application web.
+### Mots-clés
+Le premier système de notation est par mot clé, par exemple red, blue, purple, transparent ... Ce
+sont toute une série de couleur prédéfinie au sein de chaque navigateur. 
+#### RGBa
+RGB signifie Red Green Blue, cela signifie qu'on "mélange" ces trois couleurs primaires pour donner
+une autre couleur. 
+
+Deux notations possibles différentes dans ce système, soit une couleur définie sous format
+hexadécimal (6 caractères hexadécimaux précédés d'un dièse). Les deux premiers caractères
+définissent la "quantité" de rouge à mettre, les deux suivants le vert et les deux derniers le bleu. 
+
+L'autre possibilité les notations fonctionnelles rgb() et rgba(). Dans les navigateurs modernes, ces
+deux notations sont identiques. On peut donner 3 ou 4 paramètres à ces notations, les trois
+couleurs et éventuellement une composante "alpha" définissant l'opacité. Les couleurs peuvent
+être passées de deux manières, soit en pourcentage, soit avec une valeur située entre 0 et 255. 
+L'opacité s'indique entre 0 et 1. 0 étant totalement transparent et 1 totalement opaque.
+```
+p {
+ color: #123FB1; /* Ecriture hexadécimale: 12 Rouges, 3F Vert, B1 Rouge */
+ color: rgba(120, 255, 0); /* Ecriture rgba, quantité de couleur entre 0 et 255 */
+ color: rgba(46%, 100%, 0); /* Ecriture rgba, quantité de couleur en pourcentage */
+ color: rgba(46%, 100%, 0, .7); /* Parametre alpha, opacité à 0.7. */
+}
+```
+#### HSL
+La notation fonctionnelle hsl() exprime une couleur sRGB selon ses composantes de *teinte* (hue en
+anglais), *saturation*, et *luminosité*. Une composante *alpha* optionnelle représente l'opacité de la
+couleur.
+```
+p {
+ color: hsl(50 80% 40%);
+}
+```
+## Arrière-plan
+Vous pouvez définir la couleur d'arrière-plan via la propriété **background-color**.
+
+Vous pouvez aussi utiliser une image d'arrière-plan grâce à la propriété **background-image**.
+```
+p {
+ background-color: red;
+ background-image: ('test.jpg');
+}
+```
+Si l'image de fond est trop petite, vous pouvez utiliser une propriété de répétition pour définir de
+quelle manière l'image doit se répéter via **background-repeat**
+
+Vous pouvez aussi définir la taille de l'image d'arrière-plan via la propriété **background-size**, c'est
+cette propriété qui pourra être utilisée dans le cas où vous souhaiteriez que l'image s'adapte
+automatiquement à la taille de votre élément, cela peut être très pratique dans le cas où vous
+souhaitez qu'une image s'affiche correctement aussi bien sur PC que sur smartphone. 
+
+Les exemples données ici ne sont pas exhaustifs, il s'agit simplement de donner un aperçu de ce
+qui est possible de faire. 
+```
+.box {
+ background-repeat: no-repeat; /* Ne repete pas l'image */
+ background-repeat: repeat-x; /* Repete l'image horizontalement */
+ background-size: cover; /* Adapte l'image à la taille de l'élément */
+}
+```
+## Bordures
+Trois propriétés principales existent pour définir des bordures:
+- **border-style** : pour définir l'apparence de la bordure ;
+- **border-width** : pour définir l'épaisseur de la bordure ;
+- **border-color** : pour définir la couleur de la bordure.
+
+La position de la bordure peut être ajoutée si on souhaite en ajouter que sur 1 ou plusieurs cotés
+mais pas les 4, par exemple: **border-left-style**, **border-top-color**, **border-bottom-width**, **border-right-style**
+Il existe une notation appelée *shorthand* qui permet de regrouper un ou trois éléments sans devoir
+définir chaque propriété une à une, il s'agit simplement de la propriété **border**, à laquelle on peut
+aussi ajouter la position: par exemple **border-left**. Toutes les valeurs ne doivent pas
+obligatoirement être passées, les valeurs par défaut de la propriété seront utilisées si elles ne sont
+pas indiquées.
+
+Quelques exemples:
+```
+.box {
+ border: 1px solid black; /* Bordure sur les quatres cotés, solide et noire */
+ border-left: .2rem dashed red; /* Bordure sur la gauche de .2rem, pointillée et rouge */
+}
+```
+
+
+### Arrondis
+C'est via la propriété **border-radius** qu'il est possible de donner des coins arrondis à un élément.
+L'effet est effectif sur tout l'arrière-plan de l'élément, aucune bordure n'est nécessaire. L'arrondi se
+défini via une taille. 
+```
+.box {
+ border-radius: 2px;
+}
+```
+Cela aura pour effet d'appliquer un arrondi de 2 pixels sur les quatre cotés.
+
+On peut passer jusqu'à 4 valeurs différentes pour chaque coins, voici des exemples explicatifs de
+l'ordre dans lequel écrire ces valeurs:
+```
+.box {
+ /* Arrondis sur les 4 coins */
+ border-radius: 10px;
+
+ /* haut-gauche et bas-droite | haut-droite et bas-gauche */
+ border-radius: 10px 5px;
+
+ /* haut-gauche | haut-droite et bas-gauche | bas-droite */
+ border-radius: 2px 4px 2px;
+
+ /* haut-gauche | haut-droite | bas-droite | bas-gauche */
+ border-radius: 1px 0 3px 4px;
+}
+```
+## Pseudo-classe
+Une *pseudo-classe*est un mot-clé qui peut être ajouté à un sélecteur afin d'indiquer l'état
+spécifique dans lequel l'élément doit être pour être ciblé par la déclaration. Il s'écrit directement à
+la suite d'un sélecteur en commençait par un double-point. 
+Il en existe beaucoup, on va se pencher sur quelques-unes ici, d'autres seront vues plus tard dans
+les sections appropriées. 
+- **:hover** : S'applique lorsque la souris survole l'élément 
+- **:visited** : S'applique sur un lien lorsque celui-ci a déjà été visité
+- **:link** : S'applique sur un lien lorsqu'il n'a pas encore été visité
+- 
+```
+/* Au survol d'un élément a, mettre sa couleur en rouge */
+a:hover {
+ color: red;
+}
+/* Mettre en bleu la couleur des liens qui ont déjà été visités */
+a:visited {
+ color: blue; 
+}
+/* Mettre en bleu la couleur des liens qui n'ont pas encore été visités */
+a:link {
+ color: blue; 
+}
+```
