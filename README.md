@@ -793,7 +793,7 @@ Vous pouvez aussi utiliser une image d'arrière-plan grâce à la propriété **
 ```
 p {
  background-color: red;
- background-image: ('test.jpg');
+ background-image: url('test.jpg');
 }
 ```
 Si l'image de fond est trop petite, vous pouvez utiliser une propriété de répétition pour définir de
