@@ -1098,8 +1098,11 @@ On peut facilement gérer la manière dont les éléments vont se placer par rap
 }
 ```
 Voici les différentes valeurs possibles pour justify-content:
-
-**flex-start** (valeur par défaut) :
+<table>
+  <tr>
+    <td>
+      
+  **flex-start** (valeur par défaut) :
 
 - Aligne les éléments au début du conteneur 
 - Dans un flex-direction "row", c'est à gauche
@@ -1141,8 +1144,14 @@ Voici les différentes valeurs possibles pour justify-content:
 - Distribue l'espace de manière strictement égale
 - L'espace entre chaque élément est identique
 - Même espace entre les éléments qu'aux extrémités
-- Plus récent que les autres valeurs, mais bien supporté
+- Plus récent que les autres valeurs, mais bien supporté</td>
+<td><img src="https://github.com/laubuur/ifapme-html-css/blob/main/images/flex-justify-content.png" width="400" /></td>
+  </tr>
+</table>
 
-![](https://github.com/laubuur/ifapme-html-css/blob/main/images/flex-justify-content.png)
+
+
+
+
 
 
