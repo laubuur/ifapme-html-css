@@ -1146,3 +1146,126 @@ Voici les différentes valeurs possibles pour justify-content:
 ![](https://github.com/laubuur/ifapme-html-css/blob/main/images/flex-justify-content.png)
 
 
+# Cheatsheet CSS
+## Texte et typographie 
+```css
+/* Taille du texte */
+font-size: 16px;         /* Taille fixe */
+font-size: 1.2em;        /* Relative au parent */
+font-size: 1.2rem;       /* Relative à la racine */
+
+/* Style de police */
+font-family: Arial, sans-serif;
+font-weight: bold;       /* ou 400, 700, etc. */
+font-style: italic;
+text-align: center;      /* left, right, justify */
+line-height: 1.5;        /* Espacement des lignes */
+letter-spacing: 1px;     /* Espacement des lettres */
+text-decoration: underline; /* none, line-through */
+text-transform: uppercase; /* lowercase, capitalize */
+```
+## Couleurs et arrière plan
+```css
+/* Couleurs */
+color: #FF0000;          /* Hexadécimal */
+color: rgb(255, 0, 0);   /* RGB */
+color: rgba(255, 0, 0, 0.5); /* RGB avec opacité */
+
+/* Arrière-plan */
+background-color: #fff;
+background-image: url('image.jpg');
+background-size: cover;   /* contain, auto */
+background-repeat: no-repeat;
+background-position: center;
+```
+
+## Bordures et Coins arrondis
+```css
+/* Bordures */
+border: 1px solid black;
+border-width: 1px;
+border-style: solid;     /* dotted, dashed, double */
+border-color: black;
+border-radius: 5px;      /* Coins arrondis */
+
+/* Bordures spécifiques */
+border-top: 1px solid black;
+border-bottom: 1px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;
+```
+
+## Dimensions et Espacement
+```css
+/* Dimensions */
+width: 100px;           /* px, %, auto */
+height: 100px;
+min-width: 100px;
+max-width: 100px;
+min-height: 100px;
+max-height: 100px;
+
+/* Marges */
+margin: 10px;           /* Tous les côtés */
+margin: 10px 20px;      /* Haut/Bas Gauche/Droite */
+margin: 10px 20px 15px 25px; /* Haut Droite Bas Gauche */
+
+/* Padding (rembourrage) */
+padding: 10px;          /* Même syntaxe que margin */
+```
+
+## Position et display
+```css
+/* Position */
+position: relative;     /* static, absolute, fixed */
+top: 10px;
+right: 10px;
+bottom: 10px;
+left: 10px;
+z-index: 1;            /* Ordre d'empilement */
+
+/* Display */
+display: block;        /* inline, inline-block, none */
+overflow: hidden;      /* scroll, auto, visible */
+```
+
+## Ombres et Opacité
+```css
+/* Ombres */
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+text-shadow: 1px 1px 2px black;
+
+/* Opacité */
+opacity: 0.5;          /* 0 à 1 */
+```
+
+## Curseur et sélection
+```css
+/* Curseur */
+cursor: pointer;       /* wait, text, not-allowed */
+
+/* Sélection de texte */
+user-select: none;     /* auto, text, all */
+```
+
+## Transitions
+```css
+/* Transitions simples */
+transition: all 0.3s ease;
+transition: background-color 0.3s ease;
+```
+
+## Unités courantes
+```css
+/* Unités absolues */
+px  /* Pixels */
+pt  /* Points */
+
+/* Unités relatives */
+%   /* Pourcentage (relatif au parent) */
+em  /* Relatif à la taille de police du parent */
+rem /* Relatif à la taille de police de la racine */
+vh  /* 1% de la hauteur de la fenêtre */
+vw  /* 1% de la largeur de la fenêtre */
+```
+
