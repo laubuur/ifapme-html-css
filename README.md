@@ -46,7 +46,7 @@ L'HTML permet donc de définir la structure et le contenu de votre site web, on 
 toute une série de balises qui formeront l'intégralité d'une page. Voici à quoi ressemble la structure
 de base d'une page HTML (index.html):
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -127,7 +127,7 @@ Le CSS va vous permettre de modifier l'apparence des éléments de votre page we
 Dans le cadre des premiers pas, on va inclure du code CSS au sein d'une balise <*style*>. Le code
 que nous mettrons dans cette balise peut être mis dans un fichier .css séparé. 
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -147,7 +147,7 @@ Le CSS ne fonctionne pas avec des balises mais avec des *sélecteurs*. Le but es
 élément de la page via un sélecteur et de lui appliquer une apparence. Par exemple, je souhaite
 mettre tous les titres de niveau 1 (<*h1*>) en rouge, j'utilise le **sélecteur** *h1* et j'applique ensuite le style désiré: 
 
-```
+```css
 h1 {
   color: red; 
 }
@@ -182,7 +182,7 @@ modifier son comportement. Il se déclare au sein d'une balise et prend généra
 
 L'attribut le plus courant et utilisé est **class**, il permet de donner une classe à notre élément, cette classe pourra ensuite être utilisée comme sélecteur css pour définir un style.
 
-```
+```html
 <body>
   <h1 class="premier_titre">Titre de premier niveau</h1>
   <p>Ceci est un paragraphe</p>
@@ -191,7 +191,7 @@ L'attribut le plus courant et utilisé est **class**, il permet de donner une cl
 
 On peut voir dans ce code qu'un attribut class a été ajouté à la balise *h1*. On peut alors modifier le code css vu ci-dessus pour appliquer la couleur rouge à la classe *premier_titre* et plus à toutes les balises *h1*.
 
-```
+```css
 .premier_titre {
   color: red; 
 }
@@ -219,13 +219,13 @@ pourra avoir le même ID.
 
 Reprenons l'exemple ci-dessus:
 
-```
+```html
 <body>
   <h1 id="premier_titre">Titre de premier niveau</h1>
   <p>Ceci est un paragraphe</p>
 </body>
 ```
-```
+```css
 #premier_titre {
  color: red; 
 }
@@ -251,7 +251,7 @@ des éléments de même type: appliquer le code css directement au sein de la ba
 cela, il suffit de placer notre déclaration css dans un attribut ***style*** de la balise qu'on souhaite
 modifier, si je reprends le code ci-dessus, cela donnera :
 
-```
+```html
 <body>
   <h1 style="color: red;">Titre de premier niveau</h1>
   <p>Ceci est un paragraphe</p>
@@ -263,21 +263,21 @@ Le résultat sera identique et nous pouvons insérer plusieurs déclaration au s
 #### Multiples déclarations css
 Il est bien entendu possible, dans tous les cas montrés ci-dessus, de faire plusieurs déclarations css
 en même temps :
-```
+```css
 #premier_titre {
   color: red;
   font-size: 15px;
 }
 ```
 
-```
+```css
 .premier_titre {
   color: red;
   font-size: 15px;
 }
 ```
 
-```
+```html
 <body>
   <h1 style="color: red; font-size: 15px">Titre de premier niveau</h1>
   <p>Ceci est un paragraphe</p>
@@ -298,7 +298,7 @@ fonctionnement.
 Nous avons déjà pu voir comment se compose une page HTML, pour rappel voici la structure de
 base d'une page:
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -330,7 +330,7 @@ visibles dans le code, cela permet de s'organiser et de s'y retrouver plus facil
 Cela permet aussi à d'autres développeurs de s'y retrouver plus facilement dans votre code dans le
 cadre d'un travail en équipe. 
 En html, un commentaire se place entre <*!--* et *--*>, ils peuvent être mono ou multiligne:
-```
+```html
 <body>
   <!-- Ceci est un commentaire mono-ligne -->
   <h1>Premier titre</h1>
@@ -372,7 +372,7 @@ Une liste non-ordonnée se déclare via la balise **<*ul*></*ul*>**
 Une liste ordonnée se déclare via la balise **<*ol*></*ol*>**
 
 Chaque élément d'une liste se défini via la balise **<*li*></*li*>**, donc par exemple:
-```
+```html
 <!-- Liste non ordonnée -->
 <ul>
   <li>Element</li>
@@ -394,19 +394,19 @@ absolu:
 l'exemple ci-dessous, nous sommes sur la page *index.html* et nous souhaitons naviguer
 vers la page *voitures.html* se trouvant dans le dossier listes: 
 ![](https://github.com/laubuur/ifapme-html-css/blob/main/images/folder-img.png)
-```
+```html
 <a href="liste/voitures.html">Lien vers voiture.html</a>
 ```
 
 Pour faire l'inverse, et retourner au fichier *index.html* depuis la page *voitures.html*, il faut d'abord sortir du dossier pour l'ouvrir, cela se fait comme ceci:
-```
+```html
 <a href="../index.html">Lien vers voiture.html</a>
 ```
 
 
 - **Absolu**: Chemin complet vers la page qu'on souhaite ouvrir, si votre site se trouve sur le
 site* www.monsite.be*, l'exemple ci-dessus donnerait :
-```
+```html
 <a href="www.monsite.be/liste/voitures.html">Lien vers voiture.html</a>
 <!-- Peut aussi être utilisé pour ouvrir un autre site internet -->
 <a href="www.google.be">Google</a>
@@ -416,26 +416,26 @@ site* www.monsite.be*, l'exemple ci-dessus donnerait :
 Cet élément peut aussi être utilisé pour se déplacer automatiquement sur la page pour accéder à
 une section voulue. Pour cela, il faut donner un id à l'élément vers lequel on souhaite se diriger et
 renseigner cet id précédé d'un dièse dans l'attribut *href* de l'élément.
-```
+```html
 <div id="cible">Element cible vers lequel le lien doit mener</div>
 <a href="#cible">Lien pour accéder à l'élement cible</a>
 ```
 Cela peut aussi être utilisé pour accéder à un élément d'une autre page, si cet élément cible se
 trouve dans la ma page *voitures.html*:
-```
+```html
 <a href="liste/voitures.html#cible">Lien pour accéder à l'élement cible d'une autre page</a>
 ```
 
 ### Infobulle sur lien
 Pour afficher une infobulle au survol d'un lien, il faut utiliser l'attribut **title** de l'élément **a**
-```
+```html
 <a href="liste/voitures.html#cible" title="lien vers voitures.html !">Lien pour accéder à 
 l'élement cible d'une autre page</a>
 ```
 ### Ouverture du lien dans une autre page
 Si vous souhaitez que le lien ne s'ouvre pas dans la page courante mais dans un autre onglet, il
 faut utiliser l'attribut **target** et lui passer la valeur **_blank**
-```
+```html
 <a href="liste/voitures.html#cible" target="_blank">Lien pour accéder à l'élement cible d'une 
 autre page</a>
 ```
@@ -472,17 +472,17 @@ Tous les autres formats sont généralement à bannir sur internet.
 L'insertion d'une image au sein d'une page web se fait via l'élément **<*img*>**, il s'agit d'un élément
 vide, d'une balise orpheline, il n'y a donc pas de balise de fermeture. Le chemin vers l'image peut
 être absolu ou relatif comme pour l'élément **a**, cette information est renseignée via l'attribut **src**:
-```
+```html
 <img src="mon_image.webp">
 ```
 Il est fortement conseillé de renseigner aussi l'attribut **alt** pour "contenu alternatif", il s'agit d'un
 texte à afficher dans le cas où l'image ne peut pas être téléchargée ou utilisé pour des personnes
 utilisant des logiciels pour malvoyant. 
-```
+```html
 <img src="mon_image.webp" alt="Village de montagne">
 ```
 Comme pour l'élément **a**, un attribut title peut être défini par ajouter une infobulle à l'image
-```
+```html
 <img src="mon_image.webp" alt="Village de montagne" title="Ceci est un village de montagne !">
 ```
 
@@ -490,7 +490,7 @@ Vous pouvez **redimensionner** une image directement en html via les attributs *
 largeur et *height* pour la longueur, ces valeurs doivent être indiquées en pixel. Si une seule des
 deux valeurs est renseignées, l'autre valeur est calculée automatiquement pour garder le bon
 format d'image. 
-```
+```html
 <img src="mon_image.webp" alt="Village de montagne" title="Ceci est un village de montagne !" 
 width=32>
 ```
@@ -528,7 +528,7 @@ Un commentaire peut être ajouté à du code css en le mettant entre /* et */
 Un sélecteur est un moyen de sélectionner un élément de notre page HTML pour y appliquer une
 déclaration css. Il y a trois moyens de sélectionner un élément:  directement via le nom de
 l'élément, via une classe ou via un id: 
-```
+```css
 /* Sélection via le nom de l'élément */
 h1 {
   color: red;
@@ -556,7 +556,7 @@ classe au nouveau lien. A la place, on peut spécifiquement sélectionner tous l
 notre menu. 
 
 Prenons la page html suivante:
-```
+```html
 <nav>
   <ul>
   <li><a href="page1.html">Page 1</a></li>
@@ -570,7 +570,7 @@ Prenons la page html suivante:
 ```
 Pour modifier le style de tous mes liens se trouvant dans mon menu, donc au sein de l'élément *nav*
 , on peut combiner ces éléments comme ceci:
-```
+```css
 nav a {
  color: red;
 }
@@ -591,7 +591,7 @@ dans le tableau ci-dessous:
 |E~F|Sélectionne tout élément F placé après un élément E dans la page|
 
 Ainsi, on peut voir que si on avait utilisé ce code, à priori similaire, cela n'aurait pas fonctionné:
-```
+```css
 nav > a {
  color: red;
 }
@@ -607,7 +607,7 @@ offre plus de souplesse à l'utilisateur.
 
 #### Valeur absolue
 La taille absolue se définit en pixel, il s'agit donc d'un nombre entier suivi de "px". Ainsi, on pourra ainsi écrire
-```
+```css
 p {
  font-size: 16px;
 }
@@ -631,7 +631,7 @@ référence à l'élément racine: html.
 
 Il est ainsi beaucoup plus simple de garder une bonne cohérence entre les différentes tailles de
 texte en utilisant rem.
-```
+```css
 html {
  font-size: 20px;
 }
@@ -651,7 +651,7 @@ La police utilisée peut être sélectionnée via la propriété: **font-family*
 Le problème principal est que pour qu'une police puisse être utilisée, l'utilisateur doit avoir la police
 sur son appareil. Ainsi, on peut désigner des polices alternatives si la police souhaitée n'est pas
 disponible: 
-```
+```css
 p {
  font-family: Impact, "Arial Black", Arial, Verdana, sans-serif;
 }
@@ -667,7 +667,7 @@ Google dispose d'un site: https://fonts.google.com/
 
 Grâce à la *règle CSS* import, on peut importer une police facilement, par exemple, j'ai sélectionné
 une police sur google font, le site me donne cette instruction à ajouter au-dessus de ma page css:
-```
+```css
 @import 
 url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&disp
 lay=swap');
@@ -676,14 +676,14 @@ Il s'agit de la police "Open Sans", il me suffit ensuite d'utiliser ça comme "f
 
 Pour appliquer cette police à toute ma page, il suffit d'appliquer cela à la balise html :
 
-```
+```css
 html {
  font-family: "Open Sans", sans-serif;
 }
 ```
 ### Style du texte
 La propriété **font-style** permet de définir si le texte doit être en italique ou non.
-```
+```css
 p {
  font-style: normal; 
  font-style: italic;
@@ -691,7 +691,7 @@ p {
 ```
 La propriété **text-decoration** est généralement utilisée pour souligner un texte, mais cette
 propriété permet d'utiliser une ligne au-dessus, au travers ou sous le texte et de définir le style de cette ligne.
-```
+```css
 p {
  text-decoration: underline; /* Souligne le texte */
  text-decoration: underline dotted; /* Souligne le texte en traits pointillés */
@@ -701,7 +701,7 @@ p {
 ```
 Plutôt que mettre toutes les valeurs directement sur la propriété **text-decoration**, cela peut être
 séparé en plusieurs propriétés: **text-decoration-color**, **text-decoration-style** et **text-decoration-line**
-```
+```css
 p {
  text-decoration-line: underline; /* Souligne le texte */
  text-decoration-line: overline; /* Surligne le texte */
@@ -709,7 +709,7 @@ p {
  text-decoration-line: underline overline; /* Souligne et surligne le texte */
 }
 ```
-```
+```css
 p {
  text-decoration-style: solid; /* Ligne solide */
  text-decoration-style: double; /* Ligne double */
@@ -718,7 +718,7 @@ p {
  text-decoration-style: wavy; /* Ligne sous forme de vague */
 }
 ```
-```
+```css
 p {
  text-decoration-color: red; /* Ligne en rouge */
 }
@@ -726,7 +726,7 @@ p {
 
 ### Alignement du texte
 Le texte peut être aligné avec la propriété **text-align**:
-```
+```css
 p {
  text-align: left; /* Alignement à gauche */
  text-align: right; /* Alignement à droite */
@@ -736,7 +736,7 @@ p {
 ```
 ### Couleur du texte
 La couleur du texte se fait avec la propriété **color**
-```
+```css
 p {
  color: red; 
 }
@@ -769,7 +769,7 @@ deux notations sont identiques. On peut donner 3 ou 4 paramètres à ces notatio
 couleurs et éventuellement une composante "alpha" définissant l'opacité. Les couleurs peuvent
 être passées de deux manières, soit en pourcentage, soit avec une valeur située entre 0 et 255. 
 L'opacité s'indique entre 0 et 1. 0 étant totalement transparent et 1 totalement opaque.
-```
+```css
 p {
  color: #123FB1; /* Ecriture hexadécimale: 12 Rouges, 3F Vert, B1 Rouge */
  color: rgba(120, 255, 0); /* Ecriture rgba, quantité de couleur entre 0 et 255 */
@@ -781,7 +781,7 @@ p {
 La notation fonctionnelle hsl() exprime une couleur sRGB selon ses composantes de *teinte* (hue en
 anglais), *saturation*, et *luminosité*. Une composante *alpha* optionnelle représente l'opacité de la
 couleur.
-```
+```css
 p {
  color: hsl(50 80% 40%);
 }
@@ -790,7 +790,7 @@ p {
 Vous pouvez définir la couleur d'arrière-plan via la propriété **background-color**.
 
 Vous pouvez aussi utiliser une image d'arrière-plan grâce à la propriété **background-image**.
-```
+```css
 p {
  background-color: red;
  background-image: ('test.jpg');
@@ -806,7 +806,7 @@ souhaitez qu'une image s'affiche correctement aussi bien sur PC que sur smartpho
 
 Les exemples données ici ne sont pas exhaustifs, il s'agit simplement de donner un aperçu de ce
 qui est possible de faire. 
-```
+```css
 .box {
  background-repeat: no-repeat; /* Ne repete pas l'image */
  background-repeat: repeat-x; /* Repete l'image horizontalement */
@@ -828,7 +828,7 @@ obligatoirement être passées, les valeurs par défaut de la propriété seront
 pas indiquées.
 
 Quelques exemples:
-```
+```css
 .box {
  border: 1px solid black; /* Bordure sur les quatres cotés, solide et noire */
  border-left: .2rem dashed red; /* Bordure sur la gauche de .2rem, pointillée et rouge */
@@ -840,7 +840,7 @@ Quelques exemples:
 C'est via la propriété **border-radius** qu'il est possible de donner des coins arrondis à un élément.
 L'effet est effectif sur tout l'arrière-plan de l'élément, aucune bordure n'est nécessaire. L'arrondi se
 défini via une taille. 
-```
+```css
 .box {
  border-radius: 2px;
 }
@@ -849,7 +849,7 @@ Cela aura pour effet d'appliquer un arrondi de 2 pixels sur les quatre cotés.
 
 On peut passer jusqu'à 4 valeurs différentes pour chaque coins, voici des exemples explicatifs de
 l'ordre dans lequel écrire ces valeurs:
-```
+```css
 .box {
  /* Arrondis sur les 4 coins */
  border-radius: 10px;
@@ -874,7 +874,7 @@ les sections appropriées.
 - **:visited** : S'applique sur un lien lorsque celui-ci a déjà été visité
 - **:link** : S'applique sur un lien lorsqu'il n'a pas encore été visité
 
-```
+```css
 /* Au survol d'un élément a, mettre sa couleur en rouge */
 a:hover {
  color: red;
@@ -937,7 +937,7 @@ définie individuellement via les propriétés complètes margin-left, padding-t
 
 Les marges sont définies par une taille, plusieurs tailles peuvent être passées aux propriétés
 raccourcies, voici des exemples explicatifs:
-```
+```css
 .box {
  /* La propriété s'applique aux quatre côtés */
  margin: 1em;
@@ -958,10 +958,12 @@ voir "auto". Cela signifie que la marge va être calculée automatiquement. C'es
 un élément. 
 
 Si on reprend donc ce code: 
+```css
 .box {
  /* vertical | horizontal */
  margin: 5% auto;
 }
+```
 
 Cela signifie qu'on appliquera une marge de 5% en haut et en bas et de centrer horizontalement
 l'élément. 
@@ -971,7 +973,7 @@ auto ne fonctionne pas pour centrer des éléments sur la hauteur.
 
 Ainsi, si l'on souhaite centrer un élément sans déclarer d'autre marge extérieure, on applique
 simplement cette déclaration:
-```
+```css
 /* Centrage d'un élément sur la largeur */
 .box {
  margin: auto;
@@ -985,13 +987,13 @@ qu'elle est décalée du bord de l'écran et que le contenu à l'intérieur n'es
 bordure de l'élément:
 ![](https://github.com/laubuur/ifapme-html-css/blob/main/images/margin-ex.png)
 
-```
+```css
 .box {
- border: 3px solid black;
- margin: 20px;
- padding: 14px;
- width: 500px;
- height: 200px;
+  border: 3px solid black;
+  margin: 20px;
+  padding: 14px;
+  width: 500px;
+  height: 200px;
 }
 ```
 
@@ -1016,6 +1018,7 @@ Cela aura pour effet d'inclure la marge intérieure (padding) et la bordure (bor
 l'élément. Ainsi, dans l'exemple ci-dessus, le padding de 14px sera toujours bien présent, mais la
 largeur de 500px inclus maintenant ce padding et ne définit plus uniquement la taille de l'espace
 de contenu. Ainsi, la taille réelle de l'élément sera de 500 + 14 = 514px au lieu de 537. 
+
 ![](https://github.com/laubuur/ifapme-html-css/blob/main/images/compare-models.png)
 
 ## Exercice
@@ -1032,3 +1035,113 @@ vous pouvez vous inspirez:
 ![](https://github.com/laubuur/ifapme-html-css/blob/main/images/cv1.png)
 
 ![](https://github.com/laubuur/ifapme-html-css/blob/main/images/cv2.png)
+
+## Position
+Pour déterminer le comportement d'affichage d'un élément, on a la propriété **position** de disponible, celle-ci est par défaut en *static*
+```css
+.boite {
+  position: static;
+}
+
+```
+L'élément est affiché lors du flux d'affichage normal de la page, les propriétés *top*, *left*, *bottom*, *right* n'ont aucun effet.
+
+
+Il existe aussi les positions suivantes:
+
+**relative**
+Comme static, l'élément est affiché dans le flux de la page. Cependant les propriétés *top*, *left*, *bottom*, *right* permettent de décaller l'élément par rapport à sa position initiale, sans effet sur les boites aux alentours.
+
+**absolute**
+L'élément est retiré du flux de la page et ne prend aucune place à l'écran, cela signifique que les autres éléments vont se placer comme si cet élément n'existait pas. 
+L'élément est positionné par rapport à son ancêtre positionné le plus proche - Par défaut, il se placera en haut à gauche de l'écran - il peut ensuite être déplacé via les propriétés *top*, *left*, *bottom*, *right*. 
+
+**fixed**
+Comme absolute, l'élément est retiré du flux et ne prend aucune place. Cependant, l'élément restera affiché à l'écran malgré le défilement de la page. C'est pratique pour afficher un menu par exemple, le menu restera alors affiché à l'écran en permanence, quelle que soit la taille de la page.
+
+**sticky**
+Fonctionnement similaire à absolute, cependant lors du défilement de la page, l'élément ne remontera pas en dehors de l'écran et restera collé au bord de l'écran. 
+
+
+Pour plus de détail sur le fonctionnement exact de **position**, vous pouvez vous référer à la doc:
+https://developer.mozilla.org/fr/docs/Web/CSS/position
+
+
+
+## Flexbox - Modèle de boite flexible
+Flexbox, ou le modèle de boîte flexible, est un modèle de mise en page en CSS qui permet de concevoir des structures de page flexibles et responsives. Il facilite grandement l'alignement et la distribution des éléments dans un conteneur, même lorsque leurs tailles sont inconnues ou dynamiques.
+Grâce aux flexbox, on va pouvoir facilement placer les éléments où on veut sur l'écran. 
+
+Le fonctionnement de flexbox est simple, on active une boite en mode "flex", et tous ses enfants directs auront un comportement flex. Pour activer flexbox sur une boite, il suffit de déclarer cette propriété CSS:
+```css
+.boite{
+  display: flex;
+}
+```
+En faisant cela, les boites "bloc" enfant seront flex, elles prendront par défaut l'espace nécessaire en largeur à son affichage et non plus 100% de l'espace disponible. Les autres boites bloc au même niveau viendront se coller à coté jusqu'à ce qu'il n'y ait plus de place à l'écran, les boites suivantes iront donc à la ligne.
+
+Flex fonctionne par direction, on peut définir si les éléments flex se positionneront les uns à cotés des autres ou les uns en dessous des autres. Son axe principal est défini comme ceci:
+```css
+.boite {
+  flex-direction: column; //Direction verticale
+  flex-direction: row; //Direction horizontale - Par défaut
+  flex-direction: column-reverse; //Vertical inversé (de bas en haut)
+  flex-direction: row-reverse; //Horizontal inversé (de droite à gauche)
+}
+```
+L'autre axe sera considéré comme axe secondaire.
+
+On peut facilement gérer la manière dont les éléments vont se placer par rapport à l'axe principal via la propriété *justify-content*:
+```css
+.boite {
+  justify-content: space-between; 
+}
+```
+Voici les différentes valeurs possibles pour justify-content:
+
+**flex-start** (valeur par défaut) :
+
+- Aligne les éléments au début du conteneur 
+- Dans un flex-direction "row", c'est à gauche
+- Dans un flex-direction "column", c'est en haut
+
+
+**flex-end** :
+
+- Aligne les éléments à la fin du conteneur
+- Dans un flex-direction "row", c'est à droite 
+- Dans un flex-direction "column", c'est en bas
+
+
+**Center** :
+
+- Centre les éléments dans le conteneur
+- L'espace restant est réparti équitablement de chaque côté
+- Très utile pour centrer horizontalement du contenu
+
+
+**space-between** :
+
+- Distribue l'espace disponible entre les éléments
+- Le premier élément est collé au début, le dernier à la fin
+- L'espace restant est réparti équitablement entre les éléments
+- Pas d'espace avant le premier ni après le dernier élément
+
+
+**space-around** :
+
+- Distribue l'espace autour de chaque élément
+- Chaque élément a le même espace à sa gauche et à sa droite
+- Les espaces entre les éléments sont deux fois plus grands que les espaces aux extrémités 
+- Car chaque élément contribue à l'espace de son côté
+
+
+**space-evenly** :
+
+- Distribue l'espace de manière strictement égale
+- L'espace entre chaque élément est identique
+- Même espace entre les éléments qu'aux extrémités
+- Plus récent que les autres valeurs, mais bien supporté
+
+![](https://github.com/laubuur/ifapme-html-css/blob/main/images/flex-justify-content.png)
+
