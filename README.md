@@ -793,7 +793,7 @@ Vous pouvez aussi utiliser une image d'arrière-plan grâce à la propriété **
 ```css
 p {
  background-color: red;
- background-image: ('test.jpg');
+ background-image: url('test.jpg');
 }
 ```
 Si l'image de fond est trop petite, vous pouvez utiliser une propriété de répétition pour définir de
@@ -1144,4 +1144,5 @@ Voici les différentes valeurs possibles pour justify-content:
 - Plus récent que les autres valeurs, mais bien supporté
 
 ![](https://github.com/laubuur/ifapme-html-css/blob/main/images/flex-justify-content.png)
+
 
