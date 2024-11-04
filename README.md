@@ -1149,6 +1149,15 @@ Voici les différentes valeurs possibles pour justify-content:
   </tr>
 </table>
 
+Il y a ensuite la possibilité de placer les éléments en fonction de l'axe secondaire (par défaut, vertical) via la propriété *align-items*:
+```css
+.boite {
+  align-items: flex-start; //Aligne les éléments au début du conteneur
+  align-items: flex-end; //Aligne les éléments à la fin du conteneur
+  align-items: center; //Aligne les éléments au centre du conteneur
+  align-items: stretch; //Étend les éléments jusqu'à ce qu'ils ne soient plus plus petits que le conteneur
+}
+```
 
 
 
