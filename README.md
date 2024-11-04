@@ -1173,13 +1173,6 @@ Il est possible de demander à un élément de prendre plus ou moins d'espace qu
 
 La propriété flex-shrink est plus ou moins équivalent mais permet de réduire l'espace pris par un élément.
 
-La propriété "flex" est un raccourci des éléments flex-shrink et flex-grow et est souvent utilisé comme "alias" pour flex-grow:
-
-```css 
-.child {
-  flex: 1;
-}
-```
 
 Il est possible de déterminer la taille d'un élément de manière fixe avec la propriété flex-basis:
 
@@ -1187,7 +1180,15 @@ Il est possible de déterminer la taille d'un élément de manière fixe avec la
 .child {
   flex-basis: 100px;
 }
+```
 
+La propriété "flex" est un raccourci des éléments flex-shrink, flex-grow et flex-basis mais est souvent utilisé comme "alias" pour flex-grow:
+
+```css 
+.child {
+  flex: 1;
+}
+```
 
 
 
