@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>IFAPME - Flex</title>
+        <style>
+            .box {
+                /* height: 40px; */
+                display: flex;
+                border: 1px solid black;
+                /* flex-direction: column; */
+                /* justify-content: space-between; */
+                gap: 10px;
+                align-items: center;
+            }
+            .blue {
+                background: blue;
+            }
+            .red {
+                background: red;
+            }
+            .child {
+                height: 50px;
+            }
+            .alternative-block {
+                height: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="child red">Article 1</div>
+            <div class="child blue alternative-block">Article 2</div>
+            <div class="child red">Article 3</div>
+        </div>
+        <div class="box">
+            <div class="child red">Article 1</div>
+            <div class="child blue alternative-block">Article 2</div>
+            <div class="child red alternative-block">Article 3</div>
+        </div>
+    </body>
+</html> 

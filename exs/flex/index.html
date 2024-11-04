@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>IFAPME - Flex</title>
+        <style>
+            .flex {
+                display: flex;
+            }
+            .space-between {
+                justify-content: space-between;
+            }
+            .space-around {
+                justify-content: space-around;
+            }
+            .center {
+                justify-content: center;
+            }
+            .align-center {
+                align-items: center;
+            }
+            .block {
+                display: flex;
+                justify-content:center;
+                align-items: center;
+                width: 100px;
+                height: 100px;
+            }
+            .alternative-block {
+                height: 50px;
+            }
+            .red {
+                background: red;
+            }
+            .blue {
+                background: blue;
+            }
+            .green {
+                background: green;
+            }
+            .purple {
+                background: purple;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex space-between">
+            <div class="block red">1</div>
+            <div class="block red">2</div>
+            <div class="block red">3</div>
+            <div class="block red">4</div>
+            <div class="block red">5</div>
+        </div>
+        <div class="flex space-around">
+            <div class="block blue">1</div>
+            <div class="block blue">2</div>
+            <div class="block blue">3</div>
+            <div class="block blue">4</div>
+            <div class="block blue">5</div>
+        </div>
+        <div class="flex center">
+            <div class="block purple">1</div>
+            <div class="block purple">2</div>
+            <div class="block purple">3</div>
+            <div class="block purple">4</div>
+            <div class="block purple">5</div>
+        </div>
+        <div class="flex space-around align-center">
+            <div class="block green">1</div>
+            <div class="block green alternative-block">2</div>
+            <div class="block green">3</div>
+            <div class="block green alternative-block">4</div>
+            <div class="block green">5</div>
+        </div>
+    </body>
+</html>

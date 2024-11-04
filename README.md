@@ -1160,6 +1160,33 @@ Il y a ensuite la possibilité de placer les éléments en fonction de l'axe sec
 ```
 
 
+Il est possible de demander à un élément de prendre plus ou moins d'espace que les autres éléments. 
+```css 
+.child {
+  flex-grow: 1; //Tous les enfants utiliseront le maximum d'espace disponible de manière équilibrée
+}
+
+.child1{
+  flex-grow: 2; //L'enfant utilisera le maximum d'espace disponible en s'atribuant 2 fois l'espace disponible si les autres enfant ont un flex-grow de déclaré
+}
+```
+
+La propriété flex-shrink est plus ou moins équivalent mais permet de réduire l'espace pris par un élément.
+
+La propriété "flex" est un raccourci des éléments flex-shrink et flex-grow et est souvent utilisé comme "alias" pour flex-grow:
+
+```css 
+.child {
+  flex: 1;
+}
+```
+
+Il est possible de déterminer la taille d'un élément de manière fixe avec la propriété flex-basis:
+
+```css 
+.child {
+  flex-basis: 100px;
+}
 
 
 
