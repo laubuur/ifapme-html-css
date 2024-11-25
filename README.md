@@ -1194,7 +1194,7 @@ La propriété "flex" est un raccourci des éléments flex-shrink, flex-grow et 
 ## Tableau
 ### Structure de base
 
-Un tableau se déclare via la balise *<table>*. Chaque ligne se déclare via la balise *<tr>*, chaque cellule de données se déclare via la balise *<td>*.
+Un tableau se déclare via la balise *table*. Chaque ligne se déclare via la balise *tr*, chaque cellule de données se déclare via la balise *td*.
 
 ```html
 <table>
@@ -1211,7 +1211,7 @@ Un tableau se déclare via la balise *<table>*. Chaque ligne se déclare via la 
 
 ### Sémantique
 
-Il est recommandé pour une meilleure sémantique de déclarer le header, le corps et le footer du tableau via les balises *<thead>*, *<tbody>* et *<tfoot>*.
+Il est recommandé pour une meilleure sémantique de déclarer le header, le corps et le footer du tableau via les balises *thead*, *tbody* et *tfoot*.
 
 ```html
 <table>
