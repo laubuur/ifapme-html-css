@@ -1191,6 +1191,68 @@ La propriété "flex" est un raccourci des éléments flex-shrink, flex-grow et 
 ```
 
 
+## Tableau
+### Structure de base
+
+Un tableau se déclare via la balise *<table>*. Chaque ligne se déclare via la balise *<tr>*, chaque cellule de données se déclare via la balise *<td>*.
+
+```html
+<table>
+    <tr> <!-- Table Row (ligne) -->
+        <th>En-tête 1</th> <!-- Table Header (cellule d'en-tête) -->
+        <th>En-tête 2</th>
+    </tr>
+    <tr>
+        <td>Donnée 1</td> <!-- Table Data (cellule de données) -->
+        <td>Donnée 2</td>
+    </tr>
+</table>
+```
+
+### Sémantique
+
+Il est recommandé pour une meilleure sémantique de déclarer le header, le corps et le footer du tableau via les balises *<thead>*, *<tbody>* et *<tfoot>*.
+
+```html
+<table>
+    <thead> <!-- En-tête du tableau -->
+        <tr>
+            <th>Nom</th>
+            <th>Âge</th>
+        </tr>
+    </thead>
+    <tbody> <!-- Corps du tableau -->
+        <tr>
+            <td>Marie</td>
+            <td>25</td>
+        </tr>
+    </tbody>
+    <tfoot> <!-- Pied du tableau -->
+        <tr>
+            <td colspan="2">Total: 1 personne</td>
+        </tr>
+    </tfoot>
+</table>
+```
+
+Les attributs *colspan* et *rowspan* permettent de fusionner des cellules de données.
+
+### Attributs
+```html
+<td colspan="2">Fusion horizontale</td> <!-- Fusionne 2 colonnes -->
+<td rowspan="2">Fusion verticale</td> <!-- Fusionne 2 lignes -->
+```
+
+### Style 
+Chaque élément d'un tableau peut être stylisé de la même manière que n'importe quel autre élément HTML.
+Cependant, il est interessant d'utiliser la déclaration *border-collapse: collapse;* pour fusionner les bordures entre chaque cellule.
+
+```css
+table {
+    border-collapse: collapse; /* Fusionne les bordures */
+    width: 100%;
+}
+```
 
 # Cheatsheet CSS
 ## Texte et typographie 
