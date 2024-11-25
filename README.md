@@ -1254,6 +1254,14 @@ table {
 }
 ```
 
+Une autre proprié existe: *table-layout* qui permet de définir l'espace que prend chaque cellule dans le tableau, placé sur *auto*, le navigateur définira automatiquement l'esapce utilisé par chaque cellule en fonction de son contenu.
+```css
+table {
+  width: 100%;
+  table-layout: auto;
+} 
+```
+
 ## Formulaires
 
 Un formulaire html se déclare via la balise *form*. les attributs *action* et *method* sont généralement à utiliser pour déterminer ce qu'on fera des données du formulaire.
