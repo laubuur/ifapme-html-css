@@ -1254,6 +1254,108 @@ table {
 }
 ```
 
+## Formulaires
+
+Un formulaire html se déclare via la balise *form*. les attributs *action* et *method* sont généralement à utiliser pour déterminer ce qu'on fera des données du formulaire.
+Pour traiter ces données, du PHP ou du Javascript sont nécessaires, ce cours détaillera donc uniquement l'affichage d'un formulaire et non le traitement des données.
+
+```html
+<form action="/traitement.php" method="post">
+</form>
+```
+
+### Différents champs
+Un champ de formulaire "classique" s'affiche via la balise *input*, on retrouvera toute une série d'input comme, par exemple, text (champ simple de texte), number (champ nombre), password (champ mot de passe).
+Au dela de la sémantique, il est important d'utiliser le bon type car au dela des fonctions que chaque type peut apporter, cela simplifera améliorera grandement l'utilisation de votre formulaire sur smartphone. Par exemple, un input "number" affichera directement le pavé numérique de votre téléphone plutot que le clavier classique.
+```html
+  <!-- Champ texte simple -->
+  <label for="nom">Nom :</label>
+  <input type="text" id="nom" name="nom" required>
+
+  <!-- Email -->
+  <label for="email">Email :</label>
+  <input type="email" id="email" name="email">
+
+  <!-- Mot de passe -->
+  <label for="mdp">Mot de passe :</label>
+  <input type="password" id="mdp" name="mdp">
+```
+Vous pouvez retrouver tous les types d'input ici: [w3schools](https://www.w3schools.com/html/html_form_input_types.asp)
+
+L'input de type *radio* est un cas un peu particulier dans son fonctionnement, on déclarera plusieurs input avant le même attribut "name" pour que chaque bouton radio soient lié, pour que l'utilisateur ne puisse en cocher qu'un seul.
+```html
+<input type="radio" id="homme" name="genre" value="homme">
+<label for="homme">Homme</label>
+<input type="radio" id="femme" name="genre" value="femme">
+<label for="femme">Femme</label>
+```
+
+Il existe ensuite les listes déroulantes, cela ne passe pas par la balise *input* mais par *select*
+```html
+<label for="pays">Pays :</label>
+<select id="pays" name="pays">
+    <option value="france">France</option>
+    <option value="belgique">Belgique</option>
+    <option value="suisse">Suisse</option>
+</select>
+```
+On peut constater que pour chaque *option*, une *value* est associée. Cette valeur sera utilisée lors du traitement des données du formulaire, ce n'est pas ce qui sera affiché sur l'écran de l'utilisateur. Ce qui sera affiché sera le texte à l'intérieur de la balise. 
+
+Il existe enfin les *textarea*, de grande zone de texte:
+```html	
+<label for="message">Message :</label>
+<textarea id="message" name="message" rows="4" cols="50"></textarea>
+```
+On retrouvera les mêmes attributs que pour un input classique mais on y ajoutera rows et cols pour déterminer la taille par défaut de la zone de texte en "ligne" et en "colonne". 
+
+### Label
+**Il est important de noter qu'une balise label doit être associée à chaque champ et que cette balise doit être liée au champ via l'attribut for, qui fera le lien avec l'id du champ.**
+
+### Styles
+Le style de chaque élément se fait de manière classique. Il existe cependant une manière de sélectionner tous les champs d'un type précis via un sélecteur css.
+```css
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+    border: 1px solid black;
+}
+```
+
+### Envoi du formulaire & boutons
+Pour "executer" l'envoi d'un formulaire, vous devez trouver un bouton de type "submit" au sein de votre formulaire. Si aucun bouton de ce type n'est trouvé, le navigateur activera la fonction sur le premier bouton renconter qui n'est pas explicitement de type "button"
+```html
+<button type="submit">Envoyer</button>
+```
+
+### Validation de base
+Il est possible, uniquement via de l'html, de créer des validations de base pour chaque champ, par exemple, on peut ajouter l'attribut *required* à un input pour indiquer au navigateur que ce champ est requis:
+```html
+<input type="text" id="nom" required />
+```
+
+Il existe quelques autres validateurs: 
+- min & max: Sur un type number, valeur minimale & maximale
+- minlength & maxlenght: Longueur minimale & maximale
+- pattern: Permet de valider via une expression régulière (regex)
+```html
+<input type="number" id="age" min="16" max="24" />
+<input type="text" id="nom" minlength="3" />
+<input type="text" id="nom" pattern="[a-zA-Z]+" />
+```
+
+#### Styles
+Il existe des pseudo-classes css pour gérer le style des champs valides / invalides. On retrouvera *:valid* pour appliquer un style sur un champ valide et *:invalid* pour appliquer un style sur un champ invalide.
+On retrouvera deux dérivés: *:user-valid* et *:user-invalid* pour appliquer un style sur un champ valide ou invalide qui ont été modifié par l'utilisateur. Par exemple, si vous mettez un champ en *required* et que vous mettez le champ en rouge s'il est invalide, il sera mi en rouge dés l'ouverture du formulaire. Si vous appliquez le style sur la pseudo-classe *:user-invalid*, il ne sera pas rouge dès l'ouverture du formulaire mais attendra que l'utilisateur modifie le champ. 
+
+```css
+input[type="text"]:user-invalid {
+  border: 1px solid red;
+}
+```
+
+
+
+
 # Cheatsheet CSS
 ## Texte et typographie 
 ```css
