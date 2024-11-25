@@ -1321,6 +1321,10 @@ input[type="number"] {
 }
 ```
 
+Il existe des pseudo-classe spécifiques aux formulaires:
+*:focus*, qui sélectionne un élément uniquement lorsqu'il a le focus.
+
+
 ### Envoi du formulaire & boutons
 Pour "executer" l'envoi d'un formulaire, vous devez trouver un bouton de type "submit" au sein de votre formulaire. Si aucun bouton de ce type n'est trouvé, le navigateur activera la fonction sur le premier bouton renconter qui n'est pas explicitement de type "button"
 ```html
@@ -1352,6 +1356,13 @@ input[type="text"]:user-invalid {
   border: 1px solid red;
 }
 ```
+
+Voici une liste non exhaustives des différentes pseudo-classe utiles pour les formulaires (Description venant de [mozilla](https://developer.mozilla.org/fr/docs/Learn/Forms/UI_pseudo-classes))
+
+- :required et :optional qui ciblent les contrôles de formulaire optionnels ou obligatoires.
+- :valid, :invalid, :in-range, :out-of-range qui ciblent les contrôles de formulaire valides ou invalides selon les contraintes de validation des formulaires et ceux dont la valeur est contenue ou dehors de l'intervalle indiqué.
+- :enabled, :disabled, :read-only et :read-write qui ciblent les contrôles de formulaires actifs ou désactivés (via l'attribut HTML disabled), et ceux qui sont accessibles en lecture-écriture ou en lecture uniquement (avec l'attribut HTML readonly).
+- :checked, :indeterminate et :default qui ciblent respectivement les cases à cocher et boutons radio qui sont cochés, dans un état indéterminé (ni coché ni décoché) et les options par défaut (par exemple un élément input type="checkbox"* avec l'attribut checked ou un élément *option* avec l'attribut selected).
 
 
 
