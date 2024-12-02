@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>IFAPME - grid</title>
+        <style>
+            .container {
+                display: grid;
+                width: 800px;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                border: 1px solid red;
+                gap: 1rem;
+                height: 400px;
+            }
+            .item {
+                /* border: 3px solid green; */
+                /* height: 40px; */
+            }
+            .item1 {
+                grid-column: 1 / span 4;
+                grid-row: 1 / span 4;
+            }
+        </style>
+    </head>
+    <body> 
+       <div class="container">
+           <div class="item item1"></div>
+           <div class="item"></div>
+           <div class="item"></div>
+           <div class="item"></div>
+           <div class="item"></div>
+           <div class="item"></div>
+       </div>
+    </body>
+</html>

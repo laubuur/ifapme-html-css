@@ -1406,6 +1406,7 @@ Cela signifie que si on souhaite une grille avec 4 colonnes équivalentes, on pe
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 ```
+
 Il existe une fonction "repeat" qui permet d'éviter de se répeter pour indiquer la même chose:
 ```css
 .container {
