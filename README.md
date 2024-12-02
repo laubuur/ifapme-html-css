@@ -1395,6 +1395,7 @@ Pour définir les colonnes et les lignes, on pourra utiliser grid-template-colum
   grid-template-columns: 200px 100px 1fr;
   grid-template-rows: 100px 200px;
 }
+```
 
 N'importe quel type d'unité peut être utilisé pour définir la taille d'une colonne ou d'une ligne. il existe cependant une unité supplémentaire ici: **fr**
 Cela signifie "fraction", cela permettra d'utiliser l'espace restant disponible entre toutes les colonnes. 
