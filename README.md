@@ -1373,6 +1373,80 @@ Voici une liste non exhaustives des différentes pseudo-classe utiles pour les f
 - :checked, :indeterminate et :default qui ciblent respectivement les cases à cocher et boutons radio qui sont cochés, dans un état indéterminé (ni coché ni décoché) et les options par défaut (par exemple un élément input type="checkbox"* avec l'attribut checked ou un élément *option* avec l'attribut selected).
 
 
+## Grid
+Le CSS Grid Layout est un système de mise en page bidimensionnel - contrairement à flex qui fonctionne sur une seule dimension - qui simplifie et améliore la création d'interfaces web, remédiant aux limites des anciennes méthodes comme les flottants ou Flexbox. Il est conçu spécifiquement pour résoudre les problèmes de mise en page, en complément d'autres outils.
+
+Vous pouvez retrouver un guide complet sur le fonctionnement de grid ici : https://css-tricks.com/snippets/css/complete-guide-grid/
+
+### Propriétés du parent
+Grid fonctionne en parent-enfant comme flex, on active grid sur le parent et on peut définir certaines propriétés comme le nombre de colonnes ou de ligne, et on a ensuite une liste de propriétés utilisables sur les enfants pour définir leur position ou leur comportement.
+
+Pour activer grid, on va utiliser la propriété *display: grid* sur le parent:
+```css
+.contrainer {
+  display: grid;
+}
+```
+
+Pour définir les colonnes et les lignes, on pourra utiliser grid-template-columns et grid-template-rows:
+```css
+.contrainer {
+  display: grid;
+  grid-template-columns: 200px 100px 1fr;
+  grid-template-rows: 100px 200px;
+}
+
+N'importe quel type d'unité peut être utilisé pour définir la taille d'une colonne ou d'une ligne. il existe cependant une unité supplémentaire ici: **fr**
+Cela signifie "fraction", cela permettra d'utiliser l'espace restant disponible entre toutes les colonnes. 
+Par exemple, dans ce cas-ci, la 3e colonne prendra tout l'espace restant. 
+Cela signifie que si on souhaite une grille avec 4 colonnes équivalentes, on peut faire:
+```css
+.contrainer {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+```
+Il existe une fonction "repeat" qui permet d'éviter de se répeter pour indiquer la même chose:
+```css
+.container {
+ grid-template-columns: repeat(4, 1fr);
+}
+```
+
+
+Comme pour flex, on peut définir un espace entre chaque colonnes et chaque ligne:
+```css
+.container {
+  gap: 1rem; /* gap entre les lignes ET les colonnes */
+  column-gap: 1rem; /* gap entre chaque colonnes */
+  row-gap: 1rem; /* gap entre chaque lignes */
+}
+```
+
+### Propritétés des enfants
+Les propriétés les plus utilisées seront les propriétés de placement: *grid-column-start*, *grid-column-end*, *grid-row-start*, *grid-row-end*.
+
+Cela sert à indiquer quelles cellules l'élément doit occuper.
+```css
+.container {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+Il existe une notation abrégée pour les propriétés de placement: *grid-column*, *grid-row*.
+```css
+.container {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+```
+
+On peut aussi utiliser la valeur "span-x" pour indiquer sur combien de colonnes ou lignes l'élément doit s'étendre:
+```css
+.container {
+  grid-column: 1 / span 2; /* Commence à la colonne 1, s'étend sur deux colonnes */
+}
 
 
 # Cheatsheet CSS

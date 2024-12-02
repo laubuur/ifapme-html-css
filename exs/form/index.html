@@ -4,16 +4,59 @@
         <meta charset="utf-8">
         <title>IFAPME - Forms</title>
         <style>
-            input:user-invalid {
+            /* input:user-invalid {
                 border-color: red;
+            } */
+
+            textarea {
+                resize: none; 
+            }
+            input {
+                outline: none;
+            }
+            input[type="text"]:focus {
+                border-color: blue;
+                outline: none;
+            }
+            input[type="text"]:user-invalid {
+                border: 1px solid red;
             }
         </style>
     </head>
     <body> 
-<form>
-    <input type="text" id="nom" required /><br>
-    <input type="number" id="nom" max="24" /><br>
-    <button type="submit">Envoyer</button>
-</form>
+    <form>
+        Text: <input type="text" id="nom" required /><br><br>
+        <input type="number" id="nom" max="24" disabled/><br>
+
+        <div>
+            <input type="radio" id="homme" name="genre" value="homme">
+            <label for="homme">Homme</label>
+            <input type="radio" id="femme" name="genre" value="femme">
+            <label for="femme">Femme</label>
+        </div>
+        <div>
+            <label for="pays">Pays :</label>
+            <select id="pays" name="pays">
+                <option value="france">France</option>
+                <option value="belgique">Belgique</option>
+                <option value="suisse">Suisse</option>
+            </select>
+        </div>
+        <div>
+            <label for="message">Message :</label>
+            <textarea id="message" name="message" rows="4" cols="50"></textarea>
+        </div>
+        <div>
+            <div>
+                <input type="checkbox" id="scales" name="scales" checked />
+                <label for="scales">Scales</label>
+              </div>
+        </div>
+        <div>
+            <input type="color">
+            <input type="date">
+        </div>
+        <button type="submit">Envoyer</button>
+    </form>
     </body>
 </html>
