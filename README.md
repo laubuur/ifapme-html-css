@@ -1450,6 +1450,7 @@ On peut aussi utiliser la valeur "span-x" pour indiquer sur combien de colonnes 
 .container {
   grid-column: 1 / span 2; /* Commence à la colonne 1, s'étend sur deux colonnes */
 }
+```
 
 
 # Cheatsheet CSS
