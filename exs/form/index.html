@@ -4,14 +4,36 @@
         <meta charset="utf-8">
         <title>IFAPME - Forms</title>
         <style>
-            /* input:user-invalid {
-                border-color: red;
-            } */
-
+            body {
+                background: #f3f4f6;
+            }
+            main {
+                width: 1000px;
+                margin: auto;
+                
+            }
+            .container {
+                background: white;
+                border-radius: 5px;
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 3px 0px;
+                min-height: 200px;
+           
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .line {
+                display: flex;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
             textarea {
                 resize: none; 
             }
-            input {
+            /* input {
                 outline: none;
             }
             input[type="text"]:focus {
@@ -20,43 +42,163 @@
             }
             input[type="text"]:user-invalid {
                 border: 1px solid red;
+            } */
+            .first-line {
+                padding-top: 1rem;
+            }
+            .flex-1 {
+                flex: 1;
+            }
+            .name {
+                flex: 3;
+            }
+            .state {
+                flex: 1;
+            }
+            .type {
+                flex: 1;
+            }
+            .code {
+                flex: 1;
+            }
+            .field {
+                min-height: 2rem;              
+            }
+            .description {
+                flex: 1;
+            }
+            .priority {
+                flex: 1;
+            }
+            .mail {
+                flex: 1;
+            }
+            .referral {
+                flex: 2;
+            }
+            .footer {
+                background: #f9fafc;
+                height: 3rem;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 1rem;
+            }
+            label {
+                display: block;
+                color: #3c4043;
+            }
+            input, select {
+                outline: none;
+                border: 2px solid #f2f2f2;
+                border-radius: 5px;
+                padding: .5rem;
+                display: block;
+                box-sizing: border-box;
+                width: 100%;
+            }
+            input:focus, select:focus {
+                border: 2px solid #554fde;
+            }
+            input:user-invalid {
+                border: 2px solid red;
+            }
+            .button {
+                outline: none;
+                border: 2px solid #f2f2f2;
+                border-radius: 5px;
+                padding: .5rem;
+                display: block;
+                box-sizing: border-box;
+                height: 2.5rem;
+            }
+            .back {
+                background: white;
+            }
+            .back:hover {
+                background: #f2f2f2;
+            }
+            .save {
+                background: #554fde;
+                color: white;
+            }
+            .save:hover {
+                background: #4643af;
             }
         </style>
     </head>
     <body> 
-    <form>
-        Text: <input type="text" id="nom" required /><br><br>
-        <input type="number" id="nom" max="24" disabled/><br>
-
-        <div>
-            <input type="radio" id="homme" name="genre" value="homme">
-            <label for="homme">Homme</label>
-            <input type="radio" id="femme" name="genre" value="femme">
-            <label for="femme">Femme</label>
-        </div>
-        <div>
-            <label for="pays">Pays :</label>
-            <select id="pays" name="pays">
-                <option value="france">France</option>
-                <option value="belgique">Belgique</option>
-                <option value="suisse">Suisse</option>
-            </select>
-        </div>
-        <div>
-            <label for="message">Message :</label>
-            <textarea id="message" name="message" rows="4" cols="50"></textarea>
-        </div>
-        <div>
-            <div>
-                <input type="checkbox" id="scales" name="scales" checked />
-                <label for="scales">Scales</label>
-              </div>
-        </div>
-        <div>
-            <input type="color">
-            <input type="date">
-        </div>
-        <button type="submit">Envoyer</button>
-    </form>
+       
+        <main>
+            <h1>Formulaire</h1>
+            <div class="container">
+                <div class="line first-line">
+                    <div class="field name">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" required/>
+                    </div>
+                    <div class="field state">
+                        <label for="state">State</label>
+                        <select name="state" id="state">
+                            <option value="test1">test 1</option>
+                            <option value="test2">test 2</option>
+                            <option value="test3">test 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="field type">
+                        <label for="type">Type</label>
+                        <select name="type" id="type">
+                            <option value="test1">test 1</option>
+                            <option value="test2">test 2</option>
+                            <option value="test3">test 3</option>
+                        </select>
+                    </div>
+                    <div class="field code">
+                        <label for="code">Code</label>
+                        <input type="text" name="code" id="code" />
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="field description">
+                        <label for="description">Description</label>
+                        <input type="text" name="description" id="description" />
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="field priority">
+                        <label for="priority">Priority</label>
+                        <select name="priority" id="priority">
+                            <option value="test1">test 1</option>
+                            <option value="test2">test 2</option>
+                            <option value="test3">test 3</option>
+                        </select>
+                    </div>
+                    <div class="field mail">
+                        <label for="mail">Mail</label>
+                        <select name="mail" id="mail">
+                            <option value="mail">test 1</option>
+                            <option value="mail">test 2</option>
+                            <option value="mail">test 3</option>
+                        </select>
+                    </div>
+                    <div class="field referral">
+                        <label for="referral">Referral</label>
+                        <select name="referral" id="referral">
+                            <option value="referral">test 1</option>
+                            <option value="referral">test 2</option>
+                            <option value="referral">test 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="footer">
+                    <button type="button" class="button back">< Back</button>
+                    <button type="submit" class="button save">Save</button>
+                </div>
+            </div>
+        </main>
     </body>
 </html>
