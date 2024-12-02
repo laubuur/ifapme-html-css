@@ -1435,6 +1435,7 @@ Cela sert à indiquer quelles cellules l'élément doit occuper.
   grid-row-start: 1;
   grid-row-end: 3;
 }
+```
 
 Il existe une notation abrégée pour les propriétés de placement: *grid-column*, *grid-row*.
 ```css
