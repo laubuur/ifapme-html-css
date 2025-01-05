@@ -1452,6 +1452,34 @@ On peut aussi utiliser la valeur "span-x" pour indiquer sur combien de colonnes 
 }
 ```
 
+# Responsive
+
+## Prérequis
+Pour utiliser les media queries, il faut impérativement déclarer cette balise meta dans vos pages html:
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+Cette balise permet de définir le viewport du navigateur. Le viewport du navigateur est la zone de la fenêtre dans laquelle le contenu web peut être vue.
+
+## Syntaxe 
+
+Pour rendre votre site responsive, il faut utiliser des media queries. 
+Une media query est une requête CSS qui détermine si une règle CSS doit être appliquée ou non selon les conditions définies dans la requête. 
+```css
+@media screen and (max-width: 1280px) {
+  /* Sur les écrans, quand la largeur de la fenêtre fait au maximum 1280px */
+}
+
+@media all and (min-width: 1024px) and (max-width: 1280px) {
+  /* Sur tous types d'écran, quand la largeur de la fenêtre est comprise entre 1024px et 1280px */
+}
+
+@media all and (orientation: portrait) {
+ /* Sur tous types d'écrans orientés verticalement */
+}
+```
+
 
 # Cheatsheet CSS
 ## Texte et typographie 

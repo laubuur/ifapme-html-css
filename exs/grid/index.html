@@ -21,7 +21,15 @@
                 grid-column: 1 / span 4;
                 grid-row: 1 / span 4;
             }
+            .red {
+                color: red;
+
+            }
+            .red:hover {
+                color: blue;
+            }
         </style>
+    
     </head>
     <body> 
        <div class="container">
@@ -31,6 +39,14 @@
            <div class="item"></div>
            <div class="item"></div>
            <div class="item"></div>
+         
        </div>
+       <i data-lucide="menu" class="red"></i>
+
+
+       <script src="https://unpkg.com/lucide@latest"></script>
+       <script>
+         lucide.createIcons();
+       </script>
     </body>
 </html>
