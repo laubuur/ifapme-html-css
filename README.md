@@ -1531,7 +1531,7 @@ Il en existe cependant d'autres telles que *vh* ou *vw* qui permet de définir u
 ### Exemple concret
 ```css
 .container {
-  font-size: clamp(1rem, 2vw, 3rem);
+  font-size: clamp(16px, 2.5vw, 24px);
 }
 ```
 - Au moins 16px (lisible sur les petits écrans).
