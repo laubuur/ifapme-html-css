@@ -1452,19 +1452,51 @@ On peut aussi utiliser la valeur "span-x" pour indiquer sur combien de colonnes 
 }
 ```
 
-# Responsive
+# Fonctions avancées
+
+## Variables
+Il est possible de déclarer des variables dans les feuilles de style, cela permet de réutiliser des valeurs dans le code css.
+```css
+:root {
+  --primary-color: blue;
+}
+
+.container {
+  background-color: var(--primary-color);
+}
+```
+
+## Mixins
+Il est possible de déclarer des mixins dans les feuilles de style, cela permet de réutiliser des valeurs dans le code css.
+```css
+@mixin shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+.container {
+  @include shadow(2px, 2px, 5px, rgba(0, 0, 0, 0.3));
+}
+``` 
+
+
+# Responsive design
+
+## Introduction
+Le *responsive design* est un concept qui consiste à créer des sites web qui s'adaptent à toutes les tailles d'écran. 
+Cela permet de créer des sites web qui fonctionnent bien sur tous les appareils, y compris les smartphones et les tablettes.
+
+Pour réaliser un site responsive, on va utiliser plusieurs techniques avancées du CSS, notammenet les media queries, les unités relatives et la fonction avancée *clamp()*.
 
 ## Prérequis
-Pour utiliser les media queries, il faut impérativement déclarer cette balise meta dans vos pages html:
+Avant toutes choses, il est impératif que vos pages html contiennent la balise meta suivante:
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
 
 Cette balise permet de définir le viewport du navigateur. Le viewport du navigateur est la zone de la fenêtre dans laquelle le contenu web peut être vue.
 
-## Syntaxe 
+## Media queries
 
-Pour rendre votre site responsive, il faut utiliser des media queries. 
 Une media query est une requête CSS qui détermine si une règle CSS doit être appliquée ou non selon les conditions définies dans la requête. 
 ```css
 @media screen and (max-width: 1280px) {
@@ -1480,6 +1512,55 @@ Une media query est une requête CSS qui détermine si une règle CSS doit être
 }
 ```
 
+## Unités relatives
+Les unités relatives ont déjà été vues précédemment, il s'agit par exemple de *rem* ou de *em*.
+Il en existe cependant d'autres telles que *vh* ou *vw* qui permet de définir une taille en pourcentage de la hauteur ou de la largeur de la fenêtre.
+
+## Clamp
+*clamp()* est une fonction CSS avancée qui permet de définir une valeur comprise entre un minimum, une valeur idéale (préférée), et un maximum. Elle est particulièrement utile en responsive design pour créer des tailles de texte ou des espacements qui s’adaptent dynamiquement à la taille de l’écran.
+
+```css
+.container {
+  font-size: clamp(valeur_min, valeur_preferee, valeur_max);
+}
+```
+- valeur_min : La valeur minimale qui sera utilisée si la condition le nécessite.
+- valeur_préférée : La valeur idéale, souvent exprimée en unités fluides (vw par exemple).
+- valeur_max : La valeur maximale qui ne sera jamais dépassée.
+
+### Exemple concret
+```css
+.container {
+  font-size: clamp(1rem, 2vw, 3rem);
+}
+```
+- Au moins 16px (lisible sur les petits écrans).
+- Idéalement proportionnelle à la largeur de l’écran pour s’adapter à différents appareils.
+- Au maximum 24px (pour éviter que le texte devienne trop grand sur un écran large).
+
+*Comment cela fonctionne ?*
+
+*1. Écran étroit (par exemple 320px de large) :*
+
+```
+2.5vw correspond à 2.5% de la largeur de l’écran.
+Pour un écran de 320px de large : 2.5vw = 8px.
+La taille minimale est 16px, donc le texte sera affiché à 16px.
+```
+
+*2. Écran moyen (par exemple 800px de large) :*
+
+```
+2.5vw correspond à 2.5% de 800px : 20px.
+Cette valeur est entre le minimum (16px) et le maximum (24px), donc le texte sera affiché à 20px.
+```
+
+*3. Écran large (par exemple 1600px de large) :*
+
+```
+2.5vw correspond à 2.5% de 1600px : 40px.
+Mais la taille maximale est fixée à 24px, donc le texte sera affiché à 24px.`
+```
 
 # Cheatsheet CSS
 ## Texte et typographie 
