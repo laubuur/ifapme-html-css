@@ -1538,9 +1538,9 @@ Il en existe cependant d'autres telles que *vh* ou *vw* qui permet de définir u
 - Idéalement proportionnelle à la largeur de l’écran pour s’adapter à différents appareils.
 - Au maximum 24px (pour éviter que le texte devienne trop grand sur un écran large).
 
-*Comment cela fonctionne ?*
+**Comment cela fonctionne ?**
 
-*1. Écran étroit (par exemple 320px de large) :*
+**1. Écran étroit (par exemple 320px de large) :**
 
 ```
 2.5vw correspond à 2.5% de la largeur de l’écran.
@@ -1548,14 +1548,14 @@ Pour un écran de 320px de large : 2.5vw = 8px.
 La taille minimale est 16px, donc le texte sera affiché à 16px.
 ```
 
-*2. Écran moyen (par exemple 800px de large) :*
+**2. Écran moyen (par exemple 800px de large) :**
 
 ```
 2.5vw correspond à 2.5% de 800px : 20px.
 Cette valeur est entre le minimum (16px) et le maximum (24px), donc le texte sera affiché à 20px.
 ```
 
-*3. Écran large (par exemple 1600px de large) :*
+**3. Écran large (par exemple 1600px de large) :**
 
 ```
 2.5vw correspond à 2.5% de 1600px : 40px.
